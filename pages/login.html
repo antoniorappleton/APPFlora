@@ -1,0 +1,324 @@
+<!doctype html>
+
+<html class="light" lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#fffbff",
+              "on-primary": "#ffffff",
+              "secondary-container": "#fdae92",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#0c200c",
+              surface: "#fbf9f4",
+              "on-tertiary-fixed-variant": "#514531",
+              "on-primary-fixed-variant": "#374c34",
+              "primary-fixed": "#d1e9c9",
+              "secondary-fixed": "#ffdbcf",
+              "secondary-fixed-dim": "#ffb59b",
+              "tertiary-fixed-dim": "#d6c4aa",
+              "surface-bright": "#fbf9f4",
+              "outline-variant": "#c3c8be",
+              "on-secondary-fixed": "#380d01",
+              "primary-fixed-dim": "#b5cdae",
+              "tertiary-fixed": "#f3e0c4",
+              "surface-dim": "#dbdad5",
+              "on-secondary-container": "#793f2a",
+              background: "#fbf9f4",
+              tertiary: "#685a45",
+              "on-tertiary-fixed": "#241a09",
+              "surface-container-highest": "#e4e2dd",
+              "on-surface": "#1b1c19",
+              secondary: "#8b4e38",
+              "surface-container-high": "#eae8e3",
+              "surface-container": "#f0eee9",
+              outline: "#747870",
+              "inverse-on-surface": "#f2f1ec",
+              "primary-container": "#647a60",
+              "surface-tint": "#4e644b",
+              "on-surface-variant": "#434841",
+              "inverse-primary": "#b5cdae",
+              "on-primary-container": "#f7fff1",
+              "on-error": "#ffffff",
+              "tertiary-container": "#81725c",
+              error: "#ba1a1a",
+              "surface-variant": "#e4e2dd",
+              "surface-container-low": "#f5f3ee",
+              "surface-container-lowest": "#ffffff",
+              primary: "#4c6249",
+              "error-container": "#ffdad6",
+              "on-background": "#1b1c19",
+              "inverse-surface": "#30312e",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#6f3723",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "margin-mobile": "16px",
+              gutter: "24px",
+              "container-max": "1200px",
+              unit: "8px",
+              "margin-desktop": "48px",
+              "section-gap": "80px",
+            },
+            fontFamily: {
+              "label-sm": ["Plus Jakarta Sans"],
+              "body-md": ["Plus Jakarta Sans"],
+              "headline-md": ["Plus Jakarta Sans"],
+              "display-lg": ["Plus Jakarta Sans"],
+              "body-lg": ["Plus Jakarta Sans"],
+              "headline-lg": ["Plus Jakarta Sans"],
+              "label-md": ["Plus Jakarta Sans"],
+            },
+            fontSize: {
+              "label-sm": [
+                "12px",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.03em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "display-lg": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-lg": ["32px", { lineHeight: "1.2", fontWeight: "600" }],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.01em",
+                  fontWeight: "500",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #fbf9f4;
+        color: #1b1c19;
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 300,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .soft-elevation {
+        box-shadow: 0 4px 24px rgba(125, 148, 120, 0.08);
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex items-center justify-center p-margin-mobile md:p-margin-desktop"
+  >
+    <div class="w-full max-w-[440px] flex flex-col items-center">
+      <!-- Brand Identity Section -->
+      <div class="mb-12 text-center">
+        <div
+          class="flex items-center justify-center w-16 h-16 mb-4 bg-primary rounded-2xl mx-auto shadow-lg shadow-primary/20"
+        >
+          <span
+            class="material-symbols-outlined text-white text-3xl"
+            data-icon="potted_plant"
+            >potted_plant</span
+          >
+        </div>
+        <h1
+          class="font-headline-lg text-headline-lg text-primary tracking-tight"
+        >
+          FloraCare
+        </h1>
+        <p class="font-label-md text-label-md text-on-surface-variant mt-2">
+          Bem-vindo de volta ao seu jardim digital.
+        </p>
+      </div>
+      <!-- Login Container -->
+      <div
+        class="w-full bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] soft-elevation border border-primary/5"
+      >
+        <form class="space-y-6">
+          <!-- Email Field -->
+          <div class="space-y-2">
+            <label
+              class="font-label-md text-label-md text-on-surface ml-1"
+              for="email"
+              >E-mail</label
+            >
+            <div class="relative">
+              <span
+                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/40 text-[20px]"
+                data-icon="mail"
+                >mail</span
+              >
+              <input
+                class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-xl font-body-md text-body-md focus:ring-2 focus:ring-primary/20 focus:bg-primary/5 transition-all outline-none placeholder:text-outline-variant"
+                id="email"
+                placeholder="nome@exemplo.com"
+                type="email"
+              />
+            </div>
+          </div>
+          <!-- Password Field -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center px-1">
+              <label
+                class="font-label-md text-label-md text-on-surface"
+                for="password"
+                >Senha</label
+              >
+              <a
+                class="font-label-sm text-label-sm text-secondary hover:text-on-secondary-container transition-colors"
+                href="#"
+                >Esqueceu a senha?</a
+              >
+            </div>
+            <div class="relative">
+              <span
+                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/40 text-[20px]"
+                data-icon="lock"
+                >lock</span
+              >
+              <input
+                class="w-full pl-12 pr-12 py-4 bg-surface-container-low border-none rounded-xl font-body-md text-body-md focus:ring-2 focus:ring-primary/20 focus:bg-primary/5 transition-all outline-none placeholder:text-outline-variant"
+                id="password"
+                placeholder="••••••••"
+                type="password"
+              />
+              <button
+                class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors"
+                type="button"
+              >
+                <span
+                  class="material-symbols-outlined text-[20px]"
+                  data-icon="visibility"
+                  >visibility</span
+                >
+              </button>
+            </div>
+          </div>
+          <!-- Primary Action -->
+          <button
+            class="w-full py-4 bg-primary text-white font-label-md text-label-md rounded-full shadow-md shadow-primary/10 hover:bg-surface-tint hover:scale-[1.01] active:scale-[0.98] transition-all duration-300 mt-4"
+            type="submit"
+          >
+            Entrar
+          </button>
+        </form>
+        <!-- Divider -->
+        <div class="flex items-center gap-4 my-8">
+          <div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+          <span
+            class="font-label-sm text-label-sm text-outline-variant uppercase tracking-widest"
+            >ou entrar com</span
+          >
+          <div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+        </div>
+        <!-- Social Login -->
+        <div class="grid grid-cols-2 gap-4">
+          <button
+            class="flex items-center justify-center gap-3 py-3 bg-white border border-outline-variant/30 rounded-xl hover:bg-surface-container-low hover:border-primary/20 transition-all group"
+          >
+            <img
+              alt="Google Logo"
+              class="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity"
+              data-alt="A clean, high-resolution logo of the Google 'G' icon on a transparent background, rendered in its classic four colors. The lighting is bright and flat, suitable for a minimalist user interface design. The aesthetic is modern and professional, aligning with corporate brand standards."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmK1ZaFjjkAOgogL5EQ9vkjXNGXwJZhDqnif3kppSq0afkw8DN1orGG_DY8FwHely5-UG17dqUCDFJTPcaa-oR1vtluxvE737gBpqglagxofjQp6iXsF53Wq8BWwbeGae_HOHquThlfHlrFypXPomdjY16PJbtG8i6TeviNrQ1wS0J-D_t_irTKxl9jipuXUrQSa9qd-jrJyjf1crYh3Xjt4QHYwWgGeoyC7zGbyOz2bRxoyGLo3we4uTiWy57Kn_TD1pFtjvYEEQ"
+            />
+            <span class="font-label-md text-label-md text-on-surface"
+              >Google</span
+            >
+          </button>
+          <button
+            class="flex items-center justify-center gap-3 py-3 bg-white border border-outline-variant/30 rounded-xl hover:bg-surface-container-low hover:border-primary/20 transition-all group"
+          >
+            <span
+              class="material-symbols-outlined text-on-surface opacity-80 group-hover:opacity-100 transition-opacity"
+              data-icon="apple"
+              data-weight="fill"
+              >ios</span
+            >
+            <span class="font-label-md text-label-md text-on-surface"
+              >Apple</span
+            >
+          </button>
+        </div>
+      </div>
+      <!-- Footer Call to Action -->
+      <p class="mt-8 font-body-md text-body-md text-on-surface-variant">
+        Não tem uma conta?
+        <a
+          class="font-label-md text-label-md text-primary font-semibold hover:underline underline-offset-4 ml-1"
+          href="#"
+          >Criar conta</a
+        >
+      </p>
+      <!-- Aesthetic Background Elements (Asymmetric minimalist touch) -->
+      <div
+        class="fixed top-[-10%] right-[-5%] w-[40vw] h-[40vw] bg-primary/5 rounded-full blur-[100px] -z-10"
+      ></div>
+      <div
+        class="fixed bottom-[-10%] left-[-5%] w-[30vw] h-[30vw] bg-secondary/5 rounded-full blur-[80px] -z-10"
+      ></div>
+    </div>
+    <!-- Decorative Image Card (Asymmetric Layout element for Desktop) -->
+    <div
+      class="hidden lg:block fixed right-12 bottom-12 w-64 h-80 rounded-[2.5rem] overflow-hidden soft-elevation border-8 border-white"
+    >
+      <img
+        class="w-full h-full object-cover"
+        data-alt="A close-up photograph of a lush, vibrant green Monstera leaf with soft morning sunlight filtering through, casting gentle shadows. The mood is peaceful and organic, emphasizing natural textures and growth. The overall color palette is dominated by deep forest greens and warm, golden highlights, creating a serene and breathable atmosphere for a horticultural application."
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGPWPANb0EzUmOppwS1fzDmx3K0tRUzwQLrDSFJDeICrRKl2Kdd49Ag80_wY2yZUaafj_8EadcgR7aiQNcURrxAwUncNhcZHlr4AhH0JfL0BBhZD_YaSOS5c0l4az_EUIUZuXD4Q0zZmnUW0SAd4riE2QqM9473hkx4Pgy2AEwQxl0oxikC0M_HfBtAF6yUVsgDIl18PSUFejJgpFkU6AXTP0zknH_v_zo3RJ1Z9Op-X-uWXdTyd5KdNIv8fu12FnFxyKfm62-q0E"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex flex-col justify-end p-6"
+      >
+        <p class="text-white font-label-md text-label-md leading-tight">
+          "A natureza não tem pressa, mas tudo é realizado."
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

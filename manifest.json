@@ -1,0 +1,22 @@
+{
+  "name": "Herbário Digital & Cuidado de Plantas",
+  "short_name": "Herbário",
+  "description": "Explore o mundo vegetal, crie o seu jardim e aprenda a cuidar das suas plantas.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f9f9f6",
+  "theme_color": "#1b4332",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/images/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "assets/images/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

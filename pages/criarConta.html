@@ -1,0 +1,333 @@
+<!doctype html>
+
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>FloraKeep - Criar Conta</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 200,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#fffbff",
+              "on-primary": "#ffffff",
+              "secondary-container": "#fdae92",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#0c200c",
+              surface: "#fbf9f4",
+              "on-tertiary-fixed-variant": "#514531",
+              "on-primary-fixed-variant": "#374c34",
+              "primary-fixed": "#d1e9c9",
+              "secondary-fixed": "#ffdbcf",
+              "secondary-fixed-dim": "#ffb59b",
+              "tertiary-fixed-dim": "#d6c4aa",
+              "surface-bright": "#fbf9f4",
+              "outline-variant": "#c3c8be",
+              "on-secondary-fixed": "#380d01",
+              "primary-fixed-dim": "#b5cdae",
+              "tertiary-fixed": "#f3e0c4",
+              "surface-dim": "#dbdad5",
+              "on-secondary-container": "#793f2a",
+              background: "#fbf9f4",
+              tertiary: "#685a45",
+              "on-tertiary-fixed": "#241a09",
+              "surface-container-highest": "#e4e2dd",
+              "on-surface": "#1b1c19",
+              secondary: "#8b4e38",
+              "surface-container-high": "#eae8e3",
+              "surface-container": "#f0eee9",
+              outline: "#747870",
+              "inverse-on-surface": "#f2f1ec",
+              "primary-container": "#647a60",
+              "surface-tint": "#4e644b",
+              "on-surface-variant": "#434841",
+              "inverse-primary": "#b5cdae",
+              "on-primary-container": "#f7fff1",
+              "on-error": "#ffffff",
+              "tertiary-container": "#81725c",
+              error: "#ba1a1a",
+              "surface-variant": "#e4e2dd",
+              "surface-container-low": "#f5f3ee",
+              "surface-container-lowest": "#ffffff",
+              primary: "#4c6249",
+              "error-container": "#ffdad6",
+              "on-background": "#1b1c19",
+              "inverse-surface": "#30312e",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#6f3723",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "margin-mobile": "16px",
+              gutter: "24px",
+              "container-max": "1200px",
+              unit: "8px",
+              "margin-desktop": "48px",
+              "section-gap": "80px",
+            },
+            fontFamily: {
+              "label-sm": ["Plus Jakarta Sans"],
+              "body-md": ["Plus Jakarta Sans"],
+              "headline-md": ["Plus Jakarta Sans"],
+              "display-lg": ["Plus Jakarta Sans"],
+              "body-lg": ["Plus Jakarta Sans"],
+              "headline-lg": ["Plus Jakarta Sans"],
+              "label-md": ["Plus Jakarta Sans"],
+            },
+            fontSize: {
+              "label-sm": [
+                "12px",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.03em",
+                  fontWeight: "600",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "display-lg": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-lg": ["32px", { lineHeight: "1.2", fontWeight: "600" }],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.01em",
+                  fontWeight: "500",
+                },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex flex-col items-center justify-center"
+  >
+    <main
+      class="w-full max-w-[1200px] px-margin-mobile md:px-margin-desktop py-section-gap flex items-center justify-center"
+    >
+      <div
+        class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center w-full max-w-5xl"
+      >
+        <div
+          class="hidden lg:block relative rounded-[2rem] overflow-hidden shadow-[0_24px_48px_rgba(125,148,120,0.12)] aspect-[4/5]"
+        >
+          <img
+            class="absolute inset-0 w-full h-full object-cover"
+            data-alt="A serene indoor garden scene featuring a variety of lush green monsteras and delicate ferns in terracotta pots. The setting is a minimalist, sun-drenched room with warm cream walls and soft wooden textures, bathed in golden hour natural light. The overall mood is calm, organic, and welcoming, perfectly reflecting the FloraKeep brand identity of natural minimalism and botanical growth."
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkwDD3EnJCnLYp13mc5zcpi--9O-iQHH-J6vj3KFHOB_nZD_iyAB6RX1PGIshzfgs3s8eG-sqToDaMAjMIpQtYKwKaX_uZk12tXricMKnBEx2zB_GiDti6rzP1JnRhOb15tiY9MTTWgTZJ8xQqNGeOktO8cF9lFGh7CpaLWMorXr9GxBIT79dPJbcbS8V9zCag0pxQClarIoBNQF4cPbd_HczjddKKDYjQZvPO02YiODcMv0LCXBSu825edYZMVWM65A2vVZpUUfQ"
+          />
+          <div class="absolute inset-0 bg-primary/10 backdrop-blur-[2px]"></div>
+          <div class="absolute bottom-10 left-10 right-10">
+            <h2 class="font-display-lg text-display-lg text-white mb-4">
+              Sua jornada verde começa aqui.
+            </h2>
+            <p class="font-body-lg text-body-lg text-on-primary-container/90">
+              Transforme sua casa em um santuário natural com a ajuda do
+              FloraKeep.
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-col items-center lg:items-start lg:pl-12">
+          <div class="mb-10 text-center lg:text-left">
+            <span class="inline-flex items-center gap-2 mb-4">
+              <span
+                class="material-symbols-outlined text-primary text-3xl"
+                data-icon="potted_plant"
+                >potted_plant</span
+              >
+              <h1
+                class="font-headline-lg text-headline-lg text-primary tracking-tighter"
+              >
+                FloraKeep
+              </h1>
+            </span>
+            <h2 class="font-display-lg text-headline-lg text-on-surface mb-2">
+              Criar Conta
+            </h2>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Junte-se à nossa comunidade de entusiastas botânicos.
+            </p>
+          </div>
+          <form class="w-full space-y-6 max-w-md">
+            <div class="space-y-4">
+              <div class="relative group">
+                <label
+                  class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1"
+                  for="name"
+                  >Nome Completo</label
+                >
+                <div class="relative">
+                  <span
+                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/40 group-focus-within:text-primary transition-colors"
+                    data-icon="person"
+                    >person</span
+                  >
+                  <input
+                    class="w-full pl-12 pr-4 py-4 bg-surface-container border-none rounded-2xl focus:ring-2 focus:ring-primary/20 focus:bg-primary-fixed/30 transition-all duration-300 placeholder:text-on-surface-variant/40"
+                    id="name"
+                    name="name"
+                    placeholder="Seu nome"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="relative group">
+                <label
+                  class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1"
+                  for="email"
+                  >E-mail</label
+                >
+                <div class="relative">
+                  <span
+                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/40 group-focus-within:text-primary transition-colors"
+                    data-icon="mail"
+                    >mail</span
+                  >
+                  <input
+                    class="w-full pl-12 pr-4 py-4 bg-surface-container border-none rounded-2xl focus:ring-2 focus:ring-primary/20 focus:bg-primary-fixed/30 transition-all duration-300 placeholder:text-on-surface-variant/40"
+                    id="email"
+                    name="email"
+                    placeholder="email@exemplo.com"
+                    type="email"
+                  />
+                </div>
+              </div>
+              <div class="relative group">
+                <label
+                  class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1"
+                  for="password"
+                  >Senha</label
+                >
+                <div class="relative">
+                  <span
+                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/40 group-focus-within:text-primary transition-colors"
+                    data-icon="lock"
+                    >lock</span
+                  >
+                  <input
+                    class="w-full pl-12 pr-12 py-4 bg-surface-container border-none rounded-2xl focus:ring-2 focus:ring-primary/20 focus:bg-primary-fixed/30 transition-all duration-300 placeholder:text-on-surface-variant/40"
+                    id="password"
+                    name="password"
+                    placeholder="••••••••"
+                    type="password"
+                  />
+                  <button
+                    class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 hover:text-primary transition-colors"
+                    type="button"
+                  >
+                    <span
+                      class="material-symbols-outlined"
+                      data-icon="visibility"
+                      >visibility</span
+                    >
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 px-1">
+              <div class="flex items-center h-6">
+                <input
+                  class="h-5 w-5 rounded-lg border-primary/20 text-primary focus:ring-primary/20 transition-all duration-200"
+                  id="terms"
+                  name="terms"
+                  type="checkbox"
+                />
+              </div>
+              <label
+                class="font-label-sm text-label-sm text-on-surface-variant"
+                for="terms"
+              >
+                Eu aceito os
+                <a
+                  class="text-primary hover:underline font-bold transition-all"
+                  href="#"
+                  >Termos e Condições</a
+                >
+                e a
+                <a
+                  class="text-primary hover:underline font-bold transition-all"
+                  href="#"
+                  >Política de Privacidade</a
+                >.
+              </label>
+            </div>
+            <button
+              class="w-full bg-primary text-white py-5 rounded-full font-headline-md text-body-lg shadow-[0_12px_24px_rgba(76,98,73,0.2)] hover:shadow-[0_16px_32px_rgba(76,98,73,0.3)] hover:-translate-y-1 active:scale-95 transition-all duration-300"
+              type="submit"
+            >
+              Criar Conta
+            </button>
+            <div class="relative flex items-center py-4">
+              <div class="flex-grow border-t border-primary/10"></div>
+              <span
+                class="flex-shrink mx-4 font-label-sm text-label-sm text-on-surface-variant/50 uppercase tracking-widest"
+                >ou</span
+              >
+              <div class="flex-grow border-t border-primary/10"></div>
+            </div>
+            <p class="text-center font-body-md text-on-surface-variant">
+              Já tenho conta?
+              <a
+                class="text-primary font-bold hover:underline ml-1 transition-all"
+                href="#"
+                >Entrar</a
+              >
+            </p>
+          </form>
+          <footer class="mt-12 w-full lg:max-w-md text-center">
+            <p
+              class="font-label-sm text-label-sm text-on-surface-variant/40 uppercase tracking-[0.2em]"
+            >
+              © 2024 FloraKeep • Cultive sua paz
+            </p>
+          </footer>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

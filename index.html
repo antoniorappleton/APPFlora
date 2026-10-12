@@ -1,0 +1,275 @@
+<!doctype html>
+
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>FloraCare - Bem-vindo</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              tertiary: "#685a45",
+              "inverse-on-surface": "#f2f1ec",
+              "on-secondary-container": "#793f2a",
+              "on-tertiary-fixed-variant": "#514531",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#b5cdae",
+              "secondary-container": "#fdae92",
+              "on-error": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "surface-variant": "#e4e2dd",
+              secondary: "#8b4e38",
+              "on-secondary-fixed-variant": "#6f3723",
+              "on-primary-container": "#f7fff1",
+              "on-tertiary-fixed": "#241a09",
+              "error-container": "#ffdad6",
+              background: "#fbf9f4",
+              outline: "#747870",
+              "inverse-surface": "#30312e",
+              "on-background": "#1b1c19",
+              "tertiary-container": "#81725c",
+              "primary-fixed": "#d1e9c9",
+              "on-primary-fixed": "#0c200c",
+              "on-primary": "#ffffff",
+              "on-surface": "#1b1c19",
+              error: "#ba1a1a",
+              "on-secondary-fixed": "#380d01",
+              "surface-container-lowest": "#ffffff",
+              surface: "#fbf9f4",
+              "secondary-fixed-dim": "#ffb59b",
+              "surface-container-highest": "#e4e2dd",
+              "surface-container-low": "#f5f3ee",
+              "surface-container-high": "#eae8e3",
+              "surface-tint": "#4e644b",
+              "surface-container": "#f0eee9",
+              "on-tertiary-container": "#fffbff",
+              "surface-dim": "#dbdad5",
+              "secondary-fixed": "#ffdbcf",
+              "primary-fixed-dim": "#b5cdae",
+              primary: "#4c6249",
+              "on-surface-variant": "#434841",
+              "outline-variant": "#c3c8be",
+              "tertiary-fixed-dim": "#d6c4aa",
+              "primary-container": "#647a60",
+              "tertiary-fixed": "#f3e0c4",
+              "surface-bright": "#fbf9f4",
+              "on-primary-fixed-variant": "#374c34",
+              "on-secondary": "#ffffff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "section-gap": "80px",
+              gutter: "24px",
+              unit: "8px",
+              "container-max": "1200px",
+              "margin-desktop": "48px",
+              "margin-mobile": "16px",
+            },
+            fontFamily: {
+              "body-lg": ["Plus Jakarta Sans"],
+              "headline-md": ["Plus Jakarta Sans"],
+              "label-sm": ["Plus Jakarta Sans"],
+              "label-md": ["Plus Jakarta Sans"],
+              "headline-lg": ["Plus Jakarta Sans"],
+              "display-lg": ["Plus Jakarta Sans"],
+              "body-md": ["Plus Jakarta Sans"],
+            },
+            fontSize: {
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "label-sm": [
+                "12px",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.03em",
+                  fontWeight: "600",
+                },
+              ],
+              "label-md": [
+                "14px",
+                {
+                  lineHeight: "1.4",
+                  letterSpacing: "0.01em",
+                  fontWeight: "500",
+                },
+              ],
+              "headline-lg": ["32px", { lineHeight: "1.2", fontWeight: "600" }],
+              "display-lg": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 300,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      .organic-gradient {
+        background: linear-gradient(
+          to bottom,
+          rgba(251, 249, 244, 0.2) 0%,
+          rgba(251, 249, 244, 0.9) 60%,
+          rgba(251, 249, 244, 1) 100%
+        );
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-on-background font-body-md selection:bg-primary-fixed"
+  >
+    <!-- Splash Screen Container -->
+    <main
+      class="relative min-h-screen w-full flex flex-col items-center justify-between overflow-hidden"
+    >
+      <!-- Background Image with Organic Fade -->
+      <div class="absolute inset-0 z-0">
+        <img
+          alt="FloraCare App Background"
+          class="h-[618px] w-full object-cover"
+          data-alt="A serene, high-resolution photograph of lush indoor tropical plants featuring vibrant Monstera Deliciosa and Fiddle Leaf Fig leaves. The lighting is soft, natural morning sunlight filtering through a sheer curtain, creating a gentle, airy atmosphere with soft shadows. The visual style follows a minimalist, wellness-focused aesthetic with deep sage greens and warm cream highlights. The composition is clean and breathable, evoking a sense of calm, growth, and natural harmony within a modern living space."
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL3uQjhgth4ORyPuwluICmp7NuKTitPx8X2EdY7g_8O3taZzaIazcS84TKog_RgeamU78wrzklfmPonbFGFzPHBWL2_zOlhRC9BGJmi1LXVfyL8ueXZTTBvTWEwX7cfMogQQOqWgWQSkHJiYznoiFQe5yZpEvGtaY8fQN7xTwzPhXM9hra1jUURci3HBPbFittj7cbLlHEQ8AB5_ruSlgE2IHmrRZo4CJZ0GLy9FqOi0_QjaGs3wHaQMcalCsBzbe5QY2-zmgtM8s"
+        />
+        <div class="absolute inset-0 organic-gradient"></div>
+      </div>
+      <!-- Brand Identity Section -->
+      <header
+        class="relative z-10 w-full pt-20 px-gutter flex flex-col items-center text-center"
+      >
+        <div class="mb-4">
+          <span
+            class="material-symbols-outlined text-primary text-5xl mb-2"
+            data-weight="fill"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+          >
+            eco
+          </span>
+        </div>
+        <h1
+          class="font-display-lg text-display-lg text-primary tracking-tighter mb-4"
+        >
+          FloraCare
+        </h1>
+        <p
+          class="font-body-lg text-body-lg text-on-surface-variant max-w-[280px] leading-relaxed"
+        >
+          Cultive a sua própria natureza
+        </p>
+      </header>
+      <!-- Action & Onboarding Section -->
+      <section
+        class="relative z-10 w-full max-w-md px-gutter pb-16 flex flex-col items-center gap-y-10"
+      >
+        <!-- Primary Action Buttons -->
+        <div class="w-full flex flex-col gap-4">
+          <a
+            href="pages/criarConta.html"
+            class="w-full bg-primary text-on-primary py-5 rounded-full font-label-md text-label-md shadow-[0_8px_24px_rgba(76,98,73,0.15)] hover:bg-primary-container transition-all active:scale-[0.98] text-center"
+          >
+            Criar Conta
+          </a>
+          <a
+            href="pages/login.html"
+            class="w-full bg-transparent border-2 border-secondary/20 text-secondary py-5 rounded-full font-label-md text-label-md hover:bg-secondary-fixed/20 transition-all active:scale-[0.98] text-center"
+          >
+            Entrar
+          </a>
+        </div>
+        <!-- Social Auth & Footer -->
+        <div class="w-full flex flex-col items-center gap-6">
+          <div class="flex items-center gap-4 w-full">
+            <hr class="flex-grow border-outline-variant" />
+            <span
+              class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest"
+              >Ou continue com</span
+            >
+            <hr class="flex-grow border-outline-variant" />
+          </div>
+          <div class="flex gap-4">
+            <!-- Google Option -->
+            <button
+              class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-container transition-all active:scale-95 shadow-sm"
+            >
+              <svg class="w-6 h-6" viewbox="0 0 24 24">
+                <path
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                  fill="#4285F4"
+                ></path>
+                <path
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                  fill="#34A853"
+                ></path>
+                <path
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                  fill="#FBBC05"
+                ></path>
+                <path
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                  fill="#EA4335"
+                ></path>
+              </svg>
+            </button>
+            <!-- Apple Option -->
+            <button
+              class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-surface-container transition-all active:scale-95 shadow-sm"
+            >
+              <svg class="w-6 h-6 fill-on-background" viewbox="0 0 24 24">
+                <path
+                  d="M17.05 20.28c-.96.95-2.04 1.43-3.23 1.43-1.16 0-2.08-.34-3.37-1.12-1.29.78-2.33 1.12-3.41 1.12-1.19 0-2.34-.53-3.32-1.48C1.72 18.2 1 14.71 1 11.23c0-2.3.47-4.14 1.39-5.46 1.25-1.78 3.16-2.87 5.17-2.87 1.3 0 2.25.43 3.41 1.14 1.05-.72 2.16-1.14 3.45-1.14 2.11 0 4 .98 5.25 2.72-2.52 1.45-2.11 4.79.46 6-.54 1.49-1.24 2.91-2.08 3.66zM11.91 3.7c-.11-2.11 1.63-3.7 3.46-3.7.13 2.15-1.71 3.86-3.46 3.7z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <p class="font-label-sm text-on-surface-variant/60 text-center px-4">
+            Ao continuar, você concorda com nossos
+            <a class="underline hover:text-primary" href="#"
+              >Termos de Serviço</a
+            >
+            e
+            <a class="underline hover:text-primary" href="#"
+              >Política de Privacidade</a
+            >.
+          </p>
+        </div>
+      </section>
+      <!-- Decorative Organic Shape -->
+      <div
+        class="absolute bottom-0 left-0 w-full h-1 z-[1] bg-gradient-to-r from-primary/5 via-secondary/10 to-primary/5"
+      ></div>
+    </main>
+    <!-- Navigation Shell Logic: Hiding BottomNavBar and TopAppBar as per "Linear/Transactional" rule for Splash Screens -->
+  </body>
+</html>
