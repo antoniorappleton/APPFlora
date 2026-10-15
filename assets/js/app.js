@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
       navigator.serviceWorker
-        .register("/sw.js")
+        .register(new URL("../../sw.js", import.meta.url))
         .then((registration) => {
           console.log(
             "Service Worker registado com sucesso sob o escopo:",
