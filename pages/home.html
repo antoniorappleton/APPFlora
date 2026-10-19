@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1b4332" />
+    <meta
+      name="description"
+      content="Explore a FloraCare, descubra plantas e encontre inspiração para cuidar do seu jardim."
+    />
+    <title>FloraCare - Início</title>
+    <link rel="manifest" href="../manifest.json" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body class="application">
+    <header class="top-bar">
+      <a class="brand-link" href="../index.html" aria-label="FloraCare - página inicial">
+        <span aria-hidden="true">🌿</span>
+        <span>FloraCare</span>
+      </a>
+      <h1 id="app-title">Início</h1>
+    </header>
+
+    <main class="app-content">
+      <section id="home" class="app-screen" aria-labelledby="home-title">
+        <div class="welcome-panel">
+          <p class="eyebrow">Cultive a sua própria natureza</p>
+          <h2 id="home-title">Um pouco mais de verde, todos os dias.</h2>
+          <p>
+            Encontre inspiração para o seu espaço e descubra plantas que combinam
+            consigo.
+          </p>
+          <button class="primary-button" type="button" data-go-to="catalogo">
+            Explorar catálogo
+          </button>
+        </div>
+
+        <section class="content-section" aria-labelledby="discover-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Descubra</p>
+              <h2 id="discover-title">A natureza à sua maneira</h2>
+            </div>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">🪴</span>
+              <h3>Encontre a sua planta</h3>
+              <p>Explore uma seleção de plantas para diferentes espaços.</p>
+              <button class="text-button" type="button" data-go-to="catalogo">
+                Ver catálogo <span aria-hidden="true">→</span>
+              </button>
+            </article>
+            <article class="feature-card">
+              <span class="feature-icon" aria-hidden="true">🌱</span>
+              <h3>Conheça a FloraCare</h3>
+              <p>Saiba mais sobre o nosso projeto e a paixão pelas plantas.</p>
+              <button class="text-button" type="button" data-go-to="sobre">
+                Sobre nós <span aria-hidden="true">→</span>
+              </button>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section
+        id="catalogo"
+        class="app-screen hidden"
+        aria-labelledby="catalogue-title"
+      >
+        <div class="page-intro">
+          <p class="eyebrow">Encontre a sua próxima planta</p>
+          <h2 id="catalogue-title">Catálogo</h2>
+          <p>Uma seleção para trazer mais vida e cor ao seu espaço.</p>
+        </div>
+        <label class="search-container" for="catalogue-search">
+          <span class="visually-hidden">Pesquisar plantas</span>
+          <input
+            id="catalogue-search"
+            type="search"
+            placeholder="Pesquisar plantas..."
+            autocomplete="off"
+          />
+        </label>
+        <div class="filter-pills" aria-label="Filtrar plantas por categoria">
+          <button class="pill active" type="button" data-category="todas" aria-pressed="true">Todas</button>
+          <button class="pill" type="button" data-category="interior" aria-pressed="false">Interior</button>
+          <button class="pill" type="button" data-category="exterior" aria-pressed="false">Exterior</button>
+          <button class="pill" type="button" data-category="suculentas" aria-pressed="false">Suculentas</button>
+        </div>
+        <div class="plant-grid" id="plant-grid">
+          <article class="plant-card" data-category="interior" data-name="monstera costela de adão">
+            <div class="plant-illustration plant-illustration--one" aria-hidden="true">🌿</div>
+            <div class="plant-card-copy">
+              <p class="plant-category">Interior</p>
+              <h3>Monstera</h3>
+              <p>Folhas marcantes para dar personalidade à casa.</p>
+            </div>
+          </article>
+          <article class="plant-card" data-category="interior" data-name="lírio da paz">
+            <div class="plant-illustration plant-illustration--two" aria-hidden="true">🪷</div>
+            <div class="plant-card-copy">
+              <p class="plant-category">Interior</p>
+              <h3>Lírio-da-paz</h3>
+              <p>Uma presença elegante com flores delicadas.</p>
+            </div>
+          </article>
+          <article class="plant-card" data-category="exterior" data-name="lavanda">
+            <div class="plant-illustration plant-illustration--three" aria-hidden="true">💐</div>
+            <div class="plant-card-copy">
+              <p class="plant-category">Exterior</p>
+              <h3>Lavanda</h3>
+              <p>Cor e aroma para varandas e jardins soalheiros.</p>
+            </div>
+          </article>
+          <article class="plant-card" data-category="suculentas" data-name="echeveria suculenta">
+            <div class="plant-illustration plant-illustration--four" aria-hidden="true">🌵</div>
+            <div class="plant-card-copy">
+              <p class="plant-category">Suculentas</p>
+              <h3>Echeveria</h3>
+              <p>Uma suculenta compacta, perfeita para pequenos espaços.</p>
+            </div>
+          </article>
+        </div>
+        <p id="catalogue-empty" class="empty-state hidden" role="status">
+          Não encontrámos plantas com esses critérios.
+        </p>
+      </section>
+
+      <section
+        id="contacto"
+        class="app-screen hidden"
+        aria-labelledby="contact-title"
+      >
+        <div class="page-intro">
+          <p class="eyebrow">Estamos aqui para ajudar</p>
+          <h2 id="contact-title">Contacte-nos</h2>
+          <p>Tem uma dúvida ou uma sugestão? Envie-nos uma mensagem.</p>
+        </div>
+        <form class="contact-card" id="contact-form">
+          <label for="contact-name">Nome</label>
+          <input id="contact-name" name="name" type="text" autocomplete="name" required />
+          <label for="contact-email">Email</label>
+          <input
+            id="contact-email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+          />
+          <label for="contact-message">Mensagem</label>
+          <textarea id="contact-message" name="message" rows="5" required></textarea>
+          <button class="primary-button" type="submit">Preparar mensagem</button>
+          <p id="contact-status" class="form-note" role="status" aria-live="polite">
+            O envio de mensagens ainda não está configurado nesta versão.
+          </p>
+        </form>
+      </section>
+
+      <section id="sobre" class="app-screen hidden" aria-labelledby="about-title">
+        <div class="about-panel">
+          <p class="eyebrow">Sobre a FloraCare</p>
+          <h2 id="about-title">Cuidar das plantas é cuidar do nosso espaço.</h2>
+          <p>
+            A FloraCare é um projeto dedicado a aproximar pessoas do mundo das
+            plantas. Queremos tornar mais simples encontrar inspiração e descobrir
+            espécies para cada espaço.
+          </p>
+          <p>
+            Explore o catálogo, encontre novas ideias e faça crescer o seu cantinho
+            verde ao seu ritmo.
+          </p>
+          <button class="primary-button" type="button" data-go-to="contacto">
+            Fale connosco
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegação principal">
+      <button class="nav-item active" type="button" data-screen="home" aria-controls="home" aria-current="page">
+        <span class="nav-icon" aria-hidden="true">⌂</span>
+        <span class="nav-label">Início</span>
+      </button>
+      <button class="nav-item" type="button" data-screen="catalogo" aria-controls="catalogo">
+        <span class="nav-icon" aria-hidden="true">❀</span>
+        <span class="nav-label">Catálogo</span>
+      </button>
+      <button class="nav-item" type="button" data-screen="contacto" aria-controls="contacto">
+        <span class="nav-icon" aria-hidden="true">✉</span>
+        <span class="nav-label">Contacte-nos</span>
+      </button>
+      <button class="nav-item" type="button" data-screen="sobre" aria-controls="sobre">
+        <span class="nav-icon" aria-hidden="true">ⓘ</span>
+        <span class="nav-label">Sobre</span>
+      </button>
+    </nav>
+
+    <script type="module" src="../assets/js/app.js"></script>
+  </body>
+</html>

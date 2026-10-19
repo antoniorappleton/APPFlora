@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html class="light" lang="pt-BR">
+<html class="light" lang="pt-PT">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -179,7 +179,7 @@
       <div
         class="w-full bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] soft-elevation border border-primary/5"
       >
-        <form class="space-y-6">
+        <form class="space-y-6" id="login-form" method="post">
           <!-- Email Field -->
           <div class="space-y-2">
             <label
@@ -196,8 +196,12 @@
               <input
                 class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-xl font-body-md text-body-md focus:ring-2 focus:ring-primary/20 focus:bg-primary/5 transition-all outline-none placeholder:text-outline-variant"
                 id="email"
+                name="email"
                 placeholder="nome@exemplo.com"
                 type="email"
+                value="teste@teste.pt"
+                autocomplete="username"
+                required
               />
             </div>
           </div>
@@ -207,7 +211,7 @@
               <label
                 class="font-label-md text-label-md text-on-surface"
                 for="password"
-                >Senha</label
+                >Palavra-passe</label
               >
               <a
                 class="font-label-sm text-label-sm text-secondary hover:text-on-secondary-container transition-colors"
@@ -226,6 +230,10 @@
                 id="password"
                 placeholder="••••••••"
                 type="password"
+                name="password"
+                value="teste123"
+                autocomplete="current-password"
+                required
               />
               <button
                 class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors"
@@ -246,7 +254,17 @@
           >
             Entrar
           </button>
+          <p
+            id="login-status"
+            class="text-sm text-center text-red-700"
+            role="alert"
+            aria-live="polite"
+          ></p>
         </form>
+        <p class="mt-5 text-sm text-center text-on-surface-variant">
+          Conta de demonstração: <strong>teste@teste.pt</strong> /
+          palavra-passe <strong>teste123</strong>
+        </p>
         <!-- Divider -->
         <div class="flex items-center gap-4 my-8">
           <div class="h-[1px] flex-1 bg-outline-variant/30"></div>
@@ -291,7 +309,7 @@
         Não tem uma conta?
         <a
           class="font-label-md text-label-md text-primary font-semibold hover:underline underline-offset-4 ml-1"
-          href="#"
+          href="criarConta.html"
           >Criar conta</a
         >
       </p>
@@ -320,6 +338,6 @@
         </p>
       </div>
     </div>
-    <script type="module" src="../assets/js/app.js"></script>
+    <script type="module" src="../assets/js/app.js?v=4"></script>
   </body>
 </html>
