@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#1b4332" />
+    <meta name="theme-color" content="#4c6249" />
     <title>Sem ligação - FloraCare</title>
     <style>
       :root {
         color-scheme: light;
-        font-family: system-ui, sans-serif;
-        background: #f9f9f6;
-        color: #1b4332;
+        font-family: "Segoe UI", system-ui, sans-serif;
+        background: #fbf9f4;
+        color: #1b1c19;
       }
 
       body {
@@ -23,34 +23,91 @@
       }
 
       main {
-        max-width: 30rem;
+        max-width: 26rem;
         text-align: center;
       }
 
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 4rem;
+        height: 4rem;
+        margin: 0 auto 1.5rem;
+        border-radius: 1.25rem;
+        background: rgba(76, 98, 73, 0.1);
+        color: #4c6249;
+      }
+
+      .icon svg {
+        width: 2rem;
+        height: 2rem;
+      }
+
       h1 {
-        margin-bottom: 0.5rem;
+        margin: 0 0 0.75rem;
+        font-size: 1.5rem;
+        color: #4c6249;
+      }
+
+      p {
+        margin: 0;
+        color: #434841;
+        line-height: 1.6;
       }
 
       a {
-        display: inline-block;
-        margin-top: 1rem;
-        padding: 0.8rem 1.2rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.75rem;
+        padding: 0.9rem 1.6rem;
         border-radius: 999px;
-        background: #1b4332;
+        background: #4c6249;
         color: white;
+        font-weight: 600;
         text-decoration: none;
+        box-shadow: 0 12px 24px rgba(76, 98, 73, 0.2);
       }
     </style>
   </head>
   <body>
     <main>
-      <p aria-hidden="true" style="font-size: 3rem; margin: 0">🌿</p>
+      <div class="icon" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M5 21c0-8 4-14 14-16-2 10-8 14-16 14" />
+          <path d="M5 21c2-4 5-7 9-9" />
+        </svg>
+      </div>
       <h1>Está sem ligação à internet</h1>
       <p>
         Não foi possível abrir esta página. Verifique a sua ligação ou volte à
         página inicial, que pode estar disponível offline.
       </p>
-      <a href="../index.html">Voltar à página inicial</a>
+      <a href="../index.html">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          width="16"
+          height="16"
+          aria-hidden="true"
+        >
+          <path d="M19 12H5" />
+          <path d="m11 18-6-6 6-6" />
+        </svg>
+        Voltar à página inicial
+      </a>
     </main>
   </body>
 </html>

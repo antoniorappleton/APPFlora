@@ -4,29 +4,12 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>FloraKeep - Criar Conta</title>
+    <title>FloraCare - Criar Conta</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      .material-symbols-outlined {
-        font-variation-settings:
-          "FILL" 0,
-          "wght" 200,
-          "GRAD" 0,
-          "opsz" 24;
-      }
-    </style>
     <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -99,9 +82,9 @@
               "label-sm": ["Plus Jakarta Sans"],
               "body-md": ["Plus Jakarta Sans"],
               "headline-md": ["Plus Jakarta Sans"],
-              "display-lg": ["Plus Jakarta Sans"],
+              "display-lg": ["Playfair Display", "serif"],
               "body-lg": ["Plus Jakarta Sans"],
-              "headline-lg": ["Plus Jakarta Sans"],
+              "headline-lg": ["Playfair Display", "serif"],
               "label-md": ["Plus Jakarta Sans"],
             },
             fontSize: {
@@ -158,7 +141,7 @@
         >
           <img
             class="absolute inset-0 w-full h-full object-cover"
-            data-alt="A serene indoor garden scene featuring a variety of lush green monsteras and delicate ferns in terracotta pots. The setting is a minimalist, sun-drenched room with warm cream walls and soft wooden textures, bathed in golden hour natural light. The overall mood is calm, organic, and welcoming, perfectly reflecting the FloraKeep brand identity of natural minimalism and botanical growth."
+            data-alt="A serene indoor garden scene featuring a variety of lush green monsteras and delicate ferns in terracotta pots. The setting is a minimalist, sun-drenched room with warm cream walls and soft wooden textures, bathed in golden hour natural light. The overall mood is calm, organic, and welcoming, perfectly reflecting the FloraCare brand identity of natural minimalism and botanical growth."
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkwDD3EnJCnLYp13mc5zcpi--9O-iQHH-J6vj3KFHOB_nZD_iyAB6RX1PGIshzfgs3s8eG-sqToDaMAjMIpQtYKwKaX_uZk12tXricMKnBEx2zB_GiDti6rzP1JnRhOb15tiY9MTTWgTZJ8xQqNGeOktO8cF9lFGh7CpaLWMorXr9GxBIT79dPJbcbS8V9zCag0pxQClarIoBNQF4cPbd_HczjddKKDYjQZvPO02YiODcMv0LCXBSu825edYZMVWM65A2vVZpUUfQ"
           />
           <div class="absolute inset-0 bg-primary/10 backdrop-blur-[2px]"></div>
@@ -168,22 +151,30 @@
             </h2>
             <p class="font-body-lg text-body-lg text-on-primary-container/90">
               Transforme sua casa em um santuário natural com a ajuda do
-              FloraKeep.
+              FloraCare.
             </p>
           </div>
         </div>
         <div class="flex flex-col items-center lg:items-start lg:pl-12">
           <div class="mb-10 text-center lg:text-left">
             <span class="inline-flex items-center gap-2 mb-4">
-              <span
-                class="material-symbols-outlined text-primary text-3xl"
-                data-icon="potted_plant"
-                >potted_plant</span
+              <svg
+                class="w-8 h-8 text-primary"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
               >
+                <path d="M5 21c0-8 4-14 14-16-2 10-8 14-16 14" />
+                <path d="M5 21c2-4 5-7 9-9" />
+              </svg>
               <h1
                 class="font-headline-lg text-headline-lg text-primary tracking-tighter"
               >
-                FloraKeep
+                FloraCare
               </h1>
             </span>
             <h2 class="font-display-lg text-headline-lg text-on-surface mb-2">
@@ -202,11 +193,19 @@
                   >Nome Completo</label
                 >
                 <div class="relative">
-                  <span
-                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/40 group-focus-within:text-primary transition-colors"
-                    data-icon="person"
-                    >person</span
+                  <svg
+                    class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/40 group-focus-within:text-primary transition-colors"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
                   >
+                    <circle cx="12" cy="8" r="3.5" />
+                    <path d="M5 20c1.5-4 4-5.5 7-5.5s5.5 1.5 7 5.5" />
+                  </svg>
                   <input
                     class="w-full pl-12 pr-4 py-4 bg-surface-container border-none rounded-2xl focus:ring-2 focus:ring-primary/20 focus:bg-primary-fixed/30 transition-all duration-300 placeholder:text-on-surface-variant/40"
                     id="name"
@@ -223,11 +222,19 @@
                   >E-mail</label
                 >
                 <div class="relative">
-                  <span
-                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/40 group-focus-within:text-primary transition-colors"
-                    data-icon="mail"
-                    >mail</span
+                  <svg
+                    class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/40 group-focus-within:text-primary transition-colors"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
                   >
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="m4 7 8 6 8-6" />
+                  </svg>
                   <input
                     class="w-full pl-12 pr-4 py-4 bg-surface-container border-none rounded-2xl focus:ring-2 focus:ring-primary/20 focus:bg-primary-fixed/30 transition-all duration-300 placeholder:text-on-surface-variant/40"
                     id="email"
@@ -244,11 +251,19 @@
                   >Senha</label
                 >
                 <div class="relative">
-                  <span
-                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary/40 group-focus-within:text-primary transition-colors"
-                    data-icon="lock"
-                    >lock</span
+                  <svg
+                    class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/40 group-focus-within:text-primary transition-colors"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
                   >
+                    <rect x="5" y="11" width="14" height="9" rx="2" />
+                    <path d="M8 11V8a4 4 0 1 1 8 0v3" />
+                  </svg>
                   <input
                     class="w-full pl-12 pr-12 py-4 bg-surface-container border-none rounded-2xl focus:ring-2 focus:ring-primary/20 focus:bg-primary-fixed/30 transition-all duration-300 placeholder:text-on-surface-variant/40"
                     id="password"
@@ -260,11 +275,19 @@
                     class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 hover:text-primary transition-colors"
                     type="button"
                   >
-                    <span
-                      class="material-symbols-outlined"
-                      data-icon="visibility"
-                      >visibility</span
+                    <svg
+                      class="w-5 h-5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
                     >
+                      <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
                   </button>
                 </div>
               </div>
@@ -314,7 +337,7 @@
               Já tenho conta?
               <a
                 class="text-primary font-bold hover:underline ml-1 transition-all"
-                href="#"
+                href="login.html"
                 >Entrar</a
               >
             </p>
@@ -323,7 +346,7 @@
             <p
               class="font-label-sm text-label-sm text-on-surface-variant/40 uppercase tracking-[0.2em]"
             >
-              © 2024 FloraKeep • Cultive sua paz
+              © 2024 FloraCare • Cultive sua paz
             </p>
           </footer>
         </div>

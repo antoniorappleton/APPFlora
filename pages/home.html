@@ -3,197 +3,784 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#1b4332" />
+    <meta name="theme-color" content="#4c6249" />
     <meta
       name="description"
       content="Explore a FloraCare, descubra plantas e encontre inspiração para cuidar do seu jardim."
     />
     <title>FloraCare - Início</title>
     <link rel="manifest" href="../manifest.json" />
-    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              tertiary: "#685a45",
+              "inverse-on-surface": "#f2f1ec",
+              "on-secondary-container": "#793f2a",
+              "on-tertiary-fixed-variant": "#514531",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#b5cdae",
+              "secondary-container": "#fdae92",
+              "on-error": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "surface-variant": "#e4e2dd",
+              secondary: "#8b4e38",
+              "on-secondary-fixed-variant": "#6f3723",
+              "on-primary-container": "#f7fff1",
+              "on-tertiary-fixed": "#241a09",
+              "error-container": "#ffdad6",
+              background: "#fbf9f4",
+              outline: "#747870",
+              "inverse-surface": "#30312e",
+              "on-background": "#1b1c19",
+              "tertiary-container": "#81725c",
+              "primary-fixed": "#d1e9c9",
+              "on-primary-fixed": "#0c200c",
+              "on-primary": "#ffffff",
+              "on-surface": "#1b1c19",
+              error: "#ba1a1a",
+              "on-secondary-fixed": "#380d01",
+              "surface-container-lowest": "#ffffff",
+              surface: "#fbf9f4",
+              "secondary-fixed-dim": "#ffb59b",
+              "surface-container-highest": "#e4e2dd",
+              "surface-container-low": "#f5f3ee",
+              "surface-container-high": "#eae8e3",
+              "surface-tint": "#4e644b",
+              "surface-container": "#f0eee9",
+              "on-tertiary-container": "#fffbff",
+              "surface-dim": "#dbdad5",
+              "secondary-fixed": "#ffdbcf",
+              "primary-fixed-dim": "#b5cdae",
+              primary: "#4c6249",
+              "on-surface-variant": "#434841",
+              "outline-variant": "#c3c8be",
+              "tertiary-fixed-dim": "#d6c4aa",
+              "primary-container": "#647a60",
+              "tertiary-fixed": "#f3e0c4",
+              "surface-bright": "#fbf9f4",
+              "on-primary-fixed-variant": "#374c34",
+              "on-secondary": "#ffffff",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "section-gap": "80px",
+              gutter: "24px",
+              unit: "8px",
+              "container-max": "1200px",
+              "margin-desktop": "48px",
+              "margin-mobile": "16px",
+            },
+            fontFamily: {
+              "body-lg": ["Plus Jakarta Sans"],
+              "headline-md": ["Plus Jakarta Sans"],
+              "label-sm": ["Plus Jakarta Sans"],
+              "label-md": ["Plus Jakarta Sans"],
+              "headline-lg": ["Playfair Display", "serif"],
+              "display-lg": ["Playfair Display", "serif"],
+              "body-md": ["Plus Jakarta Sans"],
+            },
+            fontSize: {
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-md": ["24px", { lineHeight: "1.3", fontWeight: "600" }],
+              "label-sm": [
+                "12px",
+                { lineHeight: "1.4", letterSpacing: "0.03em", fontWeight: "600" },
+              ],
+              "label-md": [
+                "14px",
+                { lineHeight: "1.4", letterSpacing: "0.01em", fontWeight: "500" },
+              ],
+              "headline-lg": ["32px", { lineHeight: "1.2", fontWeight: "600" }],
+              "display-lg": [
+                "44px",
+                { lineHeight: "1.15", letterSpacing: "-0.01em", fontWeight: "600" },
+              ],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+      .soft-elevation {
+        box-shadow: 0 4px 24px rgba(125, 148, 120, 0.1);
+      }
+      .nav-item {
+        color: #747870;
+      }
+      .nav-item .nav-icon-wrap {
+        background: transparent;
+        transition: background-color 0.25s ease, color 0.25s ease;
+      }
+      .nav-item.active {
+        color: #4c6249;
+      }
+      .nav-item.active .nav-icon-wrap {
+        background: rgba(76, 98, 73, 0.12);
+      }
+      .pill {
+        background: #f0eee9;
+        color: #434841;
+        transition: background-color 0.2s ease, color 0.2s ease;
+      }
+      .pill.active {
+        background: #4c6249;
+        color: #ffffff;
+      }
+    </style>
   </head>
-  <body class="application">
-    <header class="top-bar">
-      <a class="brand-link" href="../index.html" aria-label="FloraCare - página inicial">
-        <span aria-hidden="true">🌿</span>
-        <span>FloraCare</span>
-      </a>
-      <h1 id="app-title">Início</h1>
+  <body class="bg-background text-on-background font-body-md text-body-md antialiased">
+    <!-- Top App Bar -->
+    <header
+      class="sticky top-0 z-30 bg-surface/95 backdrop-blur-md border-b border-outline-variant/40"
+    >
+      <div class="max-w-[960px] mx-auto px-gutter py-4 flex items-center justify-between">
+        <a
+          class="flex items-center gap-2"
+          href="../index.html"
+          aria-label="FloraCare - página inicial"
+        >
+          <span
+            class="flex items-center justify-center w-9 h-9 rounded-xl bg-primary/10 text-primary"
+          >
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 21c0-8 4-14 14-16-2 10-8 14-16 14" />
+              <path d="M5 21c2-4 5-7 9-9" />
+            </svg>
+          </span>
+          <span class="font-headline-md text-headline-md text-primary tracking-tight"
+            >FloraCare</span
+          >
+        </a>
+        <p
+          id="app-title"
+          class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest"
+        >
+          Início
+        </p>
+      </div>
     </header>
 
-    <main class="app-content">
-      <section id="home" class="app-screen" aria-labelledby="home-title">
-        <div class="welcome-panel">
-          <p class="eyebrow">Cultive a sua própria natureza</p>
-          <h2 id="home-title">Um pouco mais de verde, todos os dias.</h2>
-          <p>
-            Encontre inspiração para o seu espaço e descubra plantas que combinam
-            consigo.
-          </p>
-          <button class="primary-button" type="button" data-go-to="catalogo">
-            Explorar catálogo
-          </button>
+    <main class="max-w-[960px] mx-auto px-gutter pb-32">
+      <!-- HOME -->
+      <section id="home" class="app-screen py-10" aria-labelledby="home-title">
+        <div
+          class="relative rounded-[2rem] overflow-hidden soft-elevation aspect-[4/5] md:aspect-[16/9]"
+        >
+          <img
+            class="absolute inset-0 w-full h-full object-cover"
+            alt="Balde com ramos de flores frescas num espaço botânico acolhedor"
+            src="https://images.unsplash.com/photo-1589244159943-460088ed5c92?auto=format&fit=crop&w=1600&q=80"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/15 to-transparent"
+          ></div>
+          <div class="absolute inset-x-0 bottom-0 p-8 md:p-12">
+            <p
+              class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-widest mb-3"
+            >
+              Cultive a sua própria natureza
+            </p>
+            <h2
+              id="home-title"
+              class="font-display-lg text-headline-lg md:text-display-lg text-white mb-4 max-w-md"
+            >
+              Um pouco mais de verde, todos os dias.
+            </h2>
+            <p class="font-body-lg text-body-lg text-white/85 max-w-md mb-7">
+              Encontre inspiração para o seu espaço e descubra plantas que combinam
+              consigo.
+            </p>
+            <button
+              class="bg-white text-primary py-4 px-8 rounded-full font-label-md text-label-md shadow-lg hover:bg-primary-fixed transition-all active:scale-95"
+              type="button"
+              data-go-to="catalogo"
+            >
+              Explorar catálogo
+            </button>
+          </div>
         </div>
 
-        <section class="content-section" aria-labelledby="discover-title">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">Descubra</p>
-              <h2 id="discover-title">A natureza à sua maneira</h2>
-            </div>
-          </div>
-          <div class="feature-grid">
-            <article class="feature-card">
-              <span class="feature-icon" aria-hidden="true">🪴</span>
-              <h3>Encontre a sua planta</h3>
-              <p>Explore uma seleção de plantas para diferentes espaços.</p>
-              <button class="text-button" type="button" data-go-to="catalogo">
-                Ver catálogo <span aria-hidden="true">→</span>
+        <div class="mt-16">
+          <p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">
+            Descubra
+          </p>
+          <h2 class="font-headline-lg text-headline-lg text-on-background mb-8">
+            A natureza à sua maneira
+          </h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <article
+              class="feature-card p-8 rounded-[1.5rem] bg-surface-container-lowest soft-elevation border border-outline-variant/30"
+            >
+              <div
+                class="feature-icon w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5"
+              >
+                <svg
+                  class="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="2.2" />
+                  <path d="M12 9.5c-1.8-1.8-1.8-4.6 0-6.4 1.8 1.8 1.8 4.6 0 6.4Z" />
+                  <path d="M14.5 12c1.8-1.8 4.6-1.8 6.4 0-1.8 1.8-4.6 1.8-6.4 0Z" />
+                  <path d="M12 14.5c1.8 1.8 1.8 4.6 0 6.4-1.8-1.8-1.8-4.6 0-6.4Z" />
+                  <path d="M9.5 12c-1.8 1.8-4.6 1.8-6.4 0 1.8-1.8 4.6-1.8 6.4 0Z" />
+                </svg>
+              </div>
+              <h3 class="font-headline-md text-headline-md text-on-background mb-2">
+                Encontre a sua planta
+              </h3>
+              <p class="text-on-surface-variant mb-5">
+                Explore uma seleção de plantas para diferentes espaços.
+              </p>
+              <button
+                class="inline-flex items-center gap-2 text-primary font-label-md text-label-md hover:gap-3 transition-all"
+                type="button"
+                data-go-to="catalogo"
+              >
+                Ver catálogo
+                <svg
+                  class="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m13 6 6 6-6 6" />
+                </svg>
               </button>
             </article>
-            <article class="feature-card">
-              <span class="feature-icon" aria-hidden="true">🌱</span>
-              <h3>Conheça a FloraCare</h3>
-              <p>Saiba mais sobre o nosso projeto e a paixão pelas plantas.</p>
-              <button class="text-button" type="button" data-go-to="sobre">
-                Sobre nós <span aria-hidden="true">→</span>
+            <article
+              class="feature-card p-8 rounded-[1.5rem] bg-surface-container-lowest soft-elevation border border-outline-variant/30"
+            >
+              <div
+                class="feature-icon w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5"
+              >
+                <svg
+                  class="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 21c0-8 4-14 14-16-2 10-8 14-16 14" />
+                  <path d="M5 21c2-4 5-7 9-9" />
+                </svg>
+              </div>
+              <h3 class="font-headline-md text-headline-md text-on-background mb-2">
+                Conheça a FloraCare
+              </h3>
+              <p class="text-on-surface-variant mb-5">
+                Saiba mais sobre o nosso projeto e a paixão pelas plantas.
+              </p>
+              <button
+                class="inline-flex items-center gap-2 text-primary font-label-md text-label-md hover:gap-3 transition-all"
+                type="button"
+                data-go-to="sobre"
+              >
+                Sobre nós
+                <svg
+                  class="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m13 6 6 6-6 6" />
+                </svg>
               </button>
             </article>
           </div>
-        </section>
+        </div>
       </section>
 
-      <section
-        id="catalogo"
-        class="app-screen hidden"
-        aria-labelledby="catalogue-title"
-      >
-        <div class="page-intro">
-          <p class="eyebrow">Encontre a sua próxima planta</p>
-          <h2 id="catalogue-title">Catálogo</h2>
-          <p>Uma seleção para trazer mais vida e cor ao seu espaço.</p>
-        </div>
-        <label class="search-container" for="catalogue-search">
-          <span class="visually-hidden">Pesquisar plantas</span>
+      <!-- CATÁLOGO -->
+      <section id="catalogo" class="app-screen hidden py-10" aria-labelledby="catalogue-title">
+        <p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">
+          Encontre a sua próxima planta
+        </p>
+        <h2 id="catalogue-title" class="font-headline-lg text-headline-lg text-on-background mb-3">
+          Catálogo
+        </h2>
+        <p class="text-on-surface-variant max-w-md">
+          Uma seleção para trazer mais vida e cor ao seu espaço.
+        </p>
+
+        <label class="relative block mt-8" for="catalogue-search">
+          <span class="sr-only">Pesquisar plantas</span>
+          <svg
+            class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/40"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
           <input
             id="catalogue-search"
+            class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-2xl font-body-md text-body-md focus:ring-2 focus:ring-primary/20 outline-none placeholder:text-outline-variant"
             type="search"
             placeholder="Pesquisar plantas..."
             autocomplete="off"
           />
         </label>
-        <div class="filter-pills" aria-label="Filtrar plantas por categoria">
-          <button class="pill active" type="button" data-category="todas" aria-pressed="true">Todas</button>
-          <button class="pill" type="button" data-category="interior" aria-pressed="false">Interior</button>
-          <button class="pill" type="button" data-category="exterior" aria-pressed="false">Exterior</button>
-          <button class="pill" type="button" data-category="suculentas" aria-pressed="false">Suculentas</button>
+
+        <div
+          class="filter-pills flex gap-3 overflow-x-auto mt-6 pb-1"
+          aria-label="Filtrar plantas por categoria"
+        >
+          <button
+            class="pill active flex-shrink-0 px-4 py-2 rounded-full font-label-md text-label-md"
+            type="button"
+            data-filter="todas"
+            aria-pressed="true"
+          >
+            Todas
+          </button>
+          <button
+            class="pill flex-shrink-0 px-4 py-2 rounded-full font-label-md text-label-md"
+            type="button"
+            data-filter="interior"
+            aria-pressed="false"
+          >
+            Interior
+          </button>
+          <button
+            class="pill flex-shrink-0 px-4 py-2 rounded-full font-label-md text-label-md"
+            type="button"
+            data-filter="exterior"
+            aria-pressed="false"
+          >
+            Exterior
+          </button>
+          <button
+            class="pill flex-shrink-0 px-4 py-2 rounded-full font-label-md text-label-md"
+            type="button"
+            data-filter="suculentas"
+            aria-pressed="false"
+          >
+            Suculentas
+          </button>
         </div>
-        <div class="plant-grid" id="plant-grid">
-          <article class="plant-card" data-category="interior" data-name="monstera costela de adão">
-            <div class="plant-illustration plant-illustration--one" aria-hidden="true">🌿</div>
-            <div class="plant-card-copy">
-              <p class="plant-category">Interior</p>
-              <h3>Monstera</h3>
-              <p>Folhas marcantes para dar personalidade à casa.</p>
+
+        <div class="plant-grid grid sm:grid-cols-2 gap-6 mt-8" id="plant-grid">
+          <article
+            class="plant-card group rounded-[1.5rem] overflow-hidden bg-surface-container-lowest soft-elevation border border-outline-variant/30"
+            data-category="interior"
+            data-name="monstera costela de adão"
+          >
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                alt="Folhagem exuberante de uma planta Monstera"
+                src="https://images.unsplash.com/photo-1503149779833-1de50ebe5f8a?auto=format&fit=crop&w=900&q=80"
+              />
+              <span
+                class="absolute top-3 left-3 bg-white/90 text-primary text-[11px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full"
+                >Interior</span
+              >
+            </div>
+            <div class="p-5">
+              <h3 class="font-headline-md text-headline-md text-on-background mb-1">Monstera</h3>
+              <p class="text-on-surface-variant text-sm">
+                Folhas marcantes para dar personalidade à casa.
+              </p>
             </div>
           </article>
-          <article class="plant-card" data-category="interior" data-name="lírio da paz">
-            <div class="plant-illustration plant-illustration--two" aria-hidden="true">🪷</div>
-            <div class="plant-card-copy">
-              <p class="plant-category">Interior</p>
-              <h3>Lírio-da-paz</h3>
-              <p>Uma presença elegante com flores delicadas.</p>
+
+          <article
+            class="plant-card group rounded-[1.5rem] overflow-hidden bg-surface-container-lowest soft-elevation border border-outline-variant/30"
+            data-category="interior"
+            data-name="lírio da paz"
+          >
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                alt="Flor branca delicada de um lírio-da-paz"
+                src="https://images.unsplash.com/photo-1593691509543-c55fb32d8de5?auto=format&fit=crop&w=900&q=80"
+              />
+              <span
+                class="absolute top-3 left-3 bg-white/90 text-primary text-[11px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full"
+                >Interior</span
+              >
+            </div>
+            <div class="p-5">
+              <h3 class="font-headline-md text-headline-md text-on-background mb-1">
+                Lírio-da-paz
+              </h3>
+              <p class="text-on-surface-variant text-sm">
+                Uma presença elegante com flores delicadas.
+              </p>
             </div>
           </article>
-          <article class="plant-card" data-category="exterior" data-name="lavanda">
-            <div class="plant-illustration plant-illustration--three" aria-hidden="true">💐</div>
-            <div class="plant-card-copy">
-              <p class="plant-category">Exterior</p>
-              <h3>Lavanda</h3>
-              <p>Cor e aroma para varandas e jardins soalheiros.</p>
+
+          <article
+            class="plant-card group rounded-[1.5rem] overflow-hidden bg-surface-container-lowest soft-elevation border border-outline-variant/30"
+            data-category="exterior"
+            data-name="lavanda"
+          >
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                alt="Campo de lavanda roxa em flor"
+                src="https://images.unsplash.com/photo-1600759487717-62bbb608106e?auto=format&fit=crop&w=900&q=80"
+              />
+              <span
+                class="absolute top-3 left-3 bg-white/90 text-primary text-[11px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full"
+                >Exterior</span
+              >
+            </div>
+            <div class="p-5">
+              <h3 class="font-headline-md text-headline-md text-on-background mb-1">Lavanda</h3>
+              <p class="text-on-surface-variant text-sm">
+                Cor e aroma para varandas e jardins soalheiros.
+              </p>
             </div>
           </article>
-          <article class="plant-card" data-category="suculentas" data-name="echeveria suculenta">
-            <div class="plant-illustration plant-illustration--four" aria-hidden="true">🌵</div>
-            <div class="plant-card-copy">
-              <p class="plant-category">Suculentas</p>
-              <h3>Echeveria</h3>
-              <p>Uma suculenta compacta, perfeita para pequenos espaços.</p>
+
+          <article
+            class="plant-card group rounded-[1.5rem] overflow-hidden bg-surface-container-lowest soft-elevation border border-outline-variant/30"
+            data-category="suculentas"
+            data-name="echeveria suculenta"
+          >
+            <div class="relative aspect-[4/3] overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                alt="Suculenta Echeveria com folhas em roseta"
+                src="https://images.unsplash.com/photo-1657988149309-b9d63475d553?auto=format&fit=crop&w=900&q=80"
+              />
+              <span
+                class="absolute top-3 left-3 bg-white/90 text-primary text-[11px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full"
+                >Suculentas</span
+              >
+            </div>
+            <div class="p-5">
+              <h3 class="font-headline-md text-headline-md text-on-background mb-1">Echeveria</h3>
+              <p class="text-on-surface-variant text-sm">
+                Uma suculenta compacta, perfeita para pequenos espaços.
+              </p>
             </div>
           </article>
         </div>
-        <p id="catalogue-empty" class="empty-state hidden" role="status">
+        <p id="catalogue-empty" class="empty-state hidden text-on-surface-variant mt-8" role="status">
           Não encontrámos plantas com esses critérios.
         </p>
       </section>
 
-      <section
-        id="contacto"
-        class="app-screen hidden"
-        aria-labelledby="contact-title"
-      >
-        <div class="page-intro">
-          <p class="eyebrow">Estamos aqui para ajudar</p>
-          <h2 id="contact-title">Contacte-nos</h2>
-          <p>Tem uma dúvida ou uma sugestão? Envie-nos uma mensagem.</p>
-        </div>
-        <form class="contact-card" id="contact-form">
-          <label for="contact-name">Nome</label>
-          <input id="contact-name" name="name" type="text" autocomplete="name" required />
-          <label for="contact-email">Email</label>
-          <input
-            id="contact-email"
-            name="email"
-            type="email"
-            autocomplete="email"
-            required
-          />
-          <label for="contact-message">Mensagem</label>
-          <textarea id="contact-message" name="message" rows="5" required></textarea>
-          <button class="primary-button" type="submit">Preparar mensagem</button>
-          <p id="contact-status" class="form-note" role="status" aria-live="polite">
+      <!-- CONTACTO -->
+      <section id="contacto" class="app-screen hidden py-10" aria-labelledby="contact-title">
+        <p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">
+          Estamos aqui para ajudar
+        </p>
+        <h2 id="contact-title" class="font-headline-lg text-headline-lg text-on-background mb-3">
+          Contacte-nos
+        </h2>
+        <p class="text-on-surface-variant max-w-md">
+          Tem uma dúvida ou uma sugestão? Envie-nos uma mensagem.
+        </p>
+
+        <form
+          class="mt-8 max-w-lg bg-surface-container-lowest rounded-[2rem] p-8 soft-elevation border border-outline-variant/30 space-y-5"
+          id="contact-form"
+        >
+          <div>
+            <label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1" for="contact-name"
+              >Nome</label
+            >
+            <div class="relative">
+              <svg
+                class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="8" r="3.5" />
+                <path d="M5 20c1.5-4 4-5.5 7-5.5s5.5 1.5 7 5.5" />
+              </svg>
+              <input
+                id="contact-name"
+                class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-xl font-body-md text-body-md focus:ring-2 focus:ring-primary/20 outline-none"
+                name="name"
+                type="text"
+                autocomplete="name"
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1" for="contact-email"
+              >E-mail</label
+            >
+            <div class="relative">
+              <svg
+                class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m4 7 8 6 8-6" />
+              </svg>
+              <input
+                id="contact-email"
+                class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-xl font-body-md text-body-md focus:ring-2 focus:ring-primary/20 outline-none"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <label class="block font-label-md text-label-md text-on-surface-variant mb-2 ml-1" for="contact-message"
+              >Mensagem</label
+            >
+            <div class="relative">
+              <svg
+                class="absolute left-4 top-4 w-5 h-5 text-primary/40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+              <textarea
+                id="contact-message"
+                class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-xl font-body-md text-body-md focus:ring-2 focus:ring-primary/20 outline-none resize-vertical"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+          </div>
+          <button
+            class="w-full bg-primary text-white py-4 rounded-full font-label-md text-label-md shadow-[0_12px_24px_rgba(76,98,73,0.2)] hover:shadow-[0_16px_32px_rgba(76,98,73,0.3)] hover:-translate-y-0.5 active:scale-95 transition-all inline-flex items-center justify-center gap-2"
+            type="submit"
+          >
+            Preparar mensagem
+            <svg
+              class="w-4 h-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M22 2 11 13" />
+              <path d="M22 2 15 22l-4-9-9-4 20-7Z" />
+            </svg>
+          </button>
+          <p id="contact-status" class="text-sm text-on-surface-variant" role="status" aria-live="polite">
             O envio de mensagens ainda não está configurado nesta versão.
           </p>
         </form>
       </section>
 
-      <section id="sobre" class="app-screen hidden" aria-labelledby="about-title">
-        <div class="about-panel">
-          <p class="eyebrow">Sobre a FloraCare</p>
-          <h2 id="about-title">Cuidar das plantas é cuidar do nosso espaço.</h2>
-          <p>
-            A FloraCare é um projeto dedicado a aproximar pessoas do mundo das
-            plantas. Queremos tornar mais simples encontrar inspiração e descobrir
-            espécies para cada espaço.
+      <!-- SOBRE -->
+      <section id="sobre" class="app-screen hidden py-10" aria-labelledby="about-title">
+        <div class="relative rounded-[2rem] overflow-hidden soft-elevation aspect-[4/5] md:aspect-[16/9]">
+          <img
+            class="absolute inset-0 w-full h-full object-cover"
+            alt="Interior de uma estufa botânica repleta de plantas verdes"
+            src="https://images.unsplash.com/photo-1622818171279-fe0b6a336835?auto=format&fit=crop&w=1600&q=80"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/15 to-transparent"
+          ></div>
+          <div class="absolute inset-x-0 bottom-0 p-8 md:p-12">
+            <p class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-widest mb-3">
+              Sobre a FloraCare
+            </p>
+            <h2 id="about-title" class="font-display-lg text-headline-lg md:text-display-lg text-white max-w-lg">
+              Cuidar das plantas é cuidar do nosso espaço.
+            </h2>
+          </div>
+        </div>
+        <div class="mt-8 max-w-2xl space-y-4">
+          <p class="text-on-surface-variant">
+            A FloraCare é um projeto dedicado a aproximar pessoas do mundo das plantas.
+            Queremos tornar mais simples encontrar inspiração e descobrir espécies para
+            cada espaço.
           </p>
-          <p>
-            Explore o catálogo, encontre novas ideias e faça crescer o seu cantinho
-            verde ao seu ritmo.
+          <p class="text-on-surface-variant">
+            Explore o catálogo, encontre novas ideias e faça crescer o seu cantinho verde
+            ao seu ritmo.
           </p>
-          <button class="primary-button" type="button" data-go-to="contacto">
+          <button
+            class="inline-flex items-center gap-2 bg-primary text-white py-4 px-8 rounded-full font-label-md text-label-md shadow-[0_12px_24px_rgba(76,98,73,0.2)] hover:-translate-y-0.5 active:scale-95 transition-all"
+            type="button"
+            data-go-to="contacto"
+          >
             Fale connosco
           </button>
         </div>
       </section>
     </main>
 
-    <nav class="bottom-nav" aria-label="Navegação principal">
-      <button class="nav-item active" type="button" data-screen="home" aria-controls="home" aria-current="page">
-        <span class="nav-icon" aria-hidden="true">⌂</span>
-        <span class="nav-label">Início</span>
-      </button>
-      <button class="nav-item" type="button" data-screen="catalogo" aria-controls="catalogo">
-        <span class="nav-icon" aria-hidden="true">❀</span>
-        <span class="nav-label">Catálogo</span>
-      </button>
-      <button class="nav-item" type="button" data-screen="contacto" aria-controls="contacto">
-        <span class="nav-icon" aria-hidden="true">✉</span>
-        <span class="nav-label">Contacte-nos</span>
-      </button>
-      <button class="nav-item" type="button" data-screen="sobre" aria-controls="sobre">
-        <span class="nav-icon" aria-hidden="true">ⓘ</span>
-        <span class="nav-label">Sobre</span>
-      </button>
+    <!-- Bottom Navigation -->
+    <nav
+      class="bottom-nav fixed bottom-0 inset-x-0 z-30 bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline-variant/40"
+      aria-label="Navegação principal"
+    >
+      <div class="max-w-[960px] mx-auto flex justify-around items-center py-2 px-2">
+        <button
+          class="nav-item active flex flex-col items-center gap-1 py-1 px-2"
+          type="button"
+          data-screen="home"
+          aria-controls="home"
+          aria-current="page"
+        >
+          <span class="nav-icon-wrap flex items-center justify-center w-12 h-7 rounded-full">
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M4 10.5 12 4l8 6.5" />
+              <path d="M6 9.5V19a1 1 0 0 0 1 1h3v-5h4v5h3a1 1 0 0 0 1-1V9.5" />
+            </svg>
+          </span>
+          <span class="nav-label text-[11px] font-medium">Início</span>
+        </button>
+        <button
+          class="nav-item flex flex-col items-center gap-1 py-1 px-2"
+          type="button"
+          data-screen="catalogo"
+          aria-controls="catalogo"
+        >
+          <span class="nav-icon-wrap flex items-center justify-center w-12 h-7 rounded-full">
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="2" />
+              <path d="M12 9.8c-1.6-1.6-1.6-4.2 0-5.8 1.6 1.6 1.6 4.2 0 5.8Z" />
+              <path d="M14.2 12c1.6-1.6 4.2-1.6 5.8 0-1.6 1.6-4.2 1.6-5.8 0Z" />
+              <path d="M12 14.2c1.6 1.6 1.6 4.2 0 5.8-1.6-1.6-1.6-4.2 0-5.8Z" />
+              <path d="M9.8 12c-1.6 1.6-4.2 1.6-5.8 0 1.6-1.6 4.2-1.6 5.8 0Z" />
+            </svg>
+          </span>
+          <span class="nav-label text-[11px] font-medium">Catálogo</span>
+        </button>
+        <button
+          class="nav-item flex flex-col items-center gap-1 py-1 px-2"
+          type="button"
+          data-screen="contacto"
+          aria-controls="contacto"
+        >
+          <span class="nav-icon-wrap flex items-center justify-center w-12 h-7 rounded-full">
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="m4 7 8 6 8-6" />
+            </svg>
+          </span>
+          <span class="nav-label text-[11px] font-medium">Contacte-nos</span>
+        </button>
+        <button
+          class="nav-item flex flex-col items-center gap-1 py-1 px-2"
+          type="button"
+          data-screen="sobre"
+          aria-controls="sobre"
+        >
+          <span class="nav-icon-wrap flex items-center justify-center w-12 h-7 rounded-full">
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 11v5" />
+              <circle cx="12" cy="8" r="0.6" fill="currentColor" stroke="none" />
+            </svg>
+          </span>
+          <span class="nav-label text-[11px] font-medium">Sobre</span>
+        </button>
+      </div>
     </nav>
 
     <script type="module" src="../assets/js/app.js"></script>

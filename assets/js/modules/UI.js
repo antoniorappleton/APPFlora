@@ -64,7 +64,7 @@ export function initNavigation() {
   showScreen(requestedScreen) || showScreen("home");
 
   const searchInput = document.getElementById("catalogue-search");
-  const categoryFilters = document.querySelectorAll("[data-category]");
+  const categoryFilters = document.querySelectorAll(".pill[data-filter]");
   const plantCards = document.querySelectorAll(".plant-card");
   const emptyState = document.getElementById("catalogue-empty");
   let activeCategory = "todas";
@@ -91,7 +91,7 @@ export function initNavigation() {
   searchInput?.addEventListener("input", filterPlants);
   categoryFilters.forEach((filter) => {
     filter.addEventListener("click", () => {
-      activeCategory = filter.dataset.category || "todas";
+      activeCategory = filter.dataset.filter || "todas";
       categoryFilters.forEach((button) => {
         const isActive = button === filter;
         button.classList.toggle("active", isActive);

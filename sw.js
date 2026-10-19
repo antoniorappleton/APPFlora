@@ -1,4 +1,4 @@
-const CACHE_NAME = "floracare-v4";
+const CACHE_NAME = "floracare-v7";
 const APP_SHELL = [
   "index.html",
   "manifest.json",
@@ -7,8 +7,7 @@ const APP_SHELL = [
   "pages/criarConta.html",
   "pages/home.html",
   "pages/sobre.html",
-  "assets/css/styles.css",
-  "assets/js/app.js?v=4",
+  "assets/js/app.js",
   "assets/js/db.js",
   "assets/js/modules/UI.js",
   "assets/js/modules/api.js",
@@ -18,8 +17,13 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(CACHE_NAME);
-      const urls = APP_SHELL.map((path) => new URL(path, self.registration.scope));
-      await cache.addAll(urls);
+      const requests = APP_SHELL.map(
+        (path) =>
+          new Request(new URL(path, self.registration.scope), {
+            cache: "reload",
+          }),
+      );
+      await cache.addAll(requests);
       await self.skipWaiting();
     })(),
   );
@@ -94,33 +98,32 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     (async () => {
       const cache = await caches.open(CACHE_NAME);
-      const cachedResponse = await cache.match(request);
-
-      if (cachedResponse) {
-        event.waitUntil(
-          fetch(request)
-            .then((response) => {
-              if (response.ok) {
-                return cache.put(request, response.clone());
-              }
-              return undefined;
-            })
-            .catch((error) => {
-              console.warn("Não foi possível atualizar a cache:", error);
+      try {
+        const response = await fetch(request);
+        if (response.ok) {
+          event.waitUntil(
+            cache.put(request, response.clone()).catch((error) => {
+              console.warn("Não foi possível guardar o recurso na cache:", error);
             }),
-        );
-        return cachedResponse;
-      }
+          );
+        }
+        return response;
+      } catch (error) {
+        const cachedResponse = await cache.match(request, { ignoreSearch: true });
+        if (cachedResponse) {
+          return cachedResponse;
+        }
 
-      const response = await fetch(request);
-      if (response.ok) {
-        event.waitUntil(
-          cache.put(request, response.clone()).catch((error) => {
-            console.warn("Não foi possível guardar o recurso na cache:", error);
-          }),
-        );
+        if (request.mode === "navigate") {
+          const offlinePage = new URL("pages/offline.html", scopeUrl);
+          const fallback = await cache.match(offlinePage);
+          if (fallback) {
+            return fallback;
+          }
+        }
+
+        throw error;
       }
-      return response;
     })(),
   );
 });
