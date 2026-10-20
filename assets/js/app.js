@@ -1,8 +1,21 @@
 import { initNavigation } from "./modules/UI.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   // Inicializar o sistema de navegação entre ecrãs
   initNavigation();
+  if (document.getElementById("plant-grid")) {
+    try {
+      const { initPlantManagement } = await import("./modules/plants.js");
+      initPlantManagement();
+    } catch (error) {
+      console.error("Não foi possível iniciar o catálogo e o jardim:", error);
+      document.querySelectorAll("[data-app-status]").forEach((status) => {
+        status.textContent =
+          "Não foi possível iniciar o catálogo e o jardim. Verifique o armazenamento do navegador.";
+        status.classList.add("text-error");
+      });
+    }
+  }
 
   const loginForm = document.getElementById("login-form");
   const loginStatus = document.getElementById("login-status");

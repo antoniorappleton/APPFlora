@@ -1,4 +1,4 @@
-const CACHE_NAME = "floracare-v7";
+const CACHE_NAME = "floracare-v8";
 const APP_SHELL = [
   "index.html",
   "manifest.json",
@@ -10,6 +10,7 @@ const APP_SHELL = [
   "assets/js/app.js",
   "assets/js/db.js",
   "assets/js/modules/UI.js",
+  "assets/js/modules/plants.js",
   "assets/js/modules/api.js",
 ];
 

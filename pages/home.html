@@ -143,6 +143,27 @@
         background: #4c6249;
         color: #ffffff;
       }
+      .plant-action {
+        border: 1px solid #c3c8be;
+        border-radius: 9999px;
+        padding: 0.5rem 0.9rem;
+        color: #434841;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .plant-dialog {
+        width: min(92vw, 34rem);
+        max-height: 90dvh;
+        overflow-y: auto;
+        border: 1px solid #c3c8be;
+        border-radius: 1.5rem;
+        padding: 1.5rem;
+        color: #1b1c19;
+        background: #fbf9f4;
+      }
+      .plant-dialog::backdrop {
+        background: rgba(27, 28, 25, 0.45);
+      }
     </style>
   </head>
   <body class="bg-background text-on-background font-body-md text-body-md antialiased">
@@ -346,6 +367,16 @@
         <p class="text-on-surface-variant max-w-md">
           Uma seleção para trazer mais vida e cor ao seu espaço.
         </p>
+        <div class="mt-6 flex flex-wrap items-center gap-4">
+          <button
+            id="add-plant-button"
+            class="rounded-full bg-primary px-6 py-3 font-label-md text-label-md text-white"
+            type="button"
+          >
+            Adicionar planta
+          </button>
+          <p class="text-sm text-on-surface-variant" data-app-status role="status" aria-live="polite"></p>
+        </div>
 
         <label class="relative block mt-8" for="catalogue-search">
           <span class="sr-only">Pesquisar plantas</span>
@@ -409,108 +440,38 @@
           </button>
         </div>
 
-        <div class="plant-grid grid sm:grid-cols-2 gap-6 mt-8" id="plant-grid">
-          <article
-            class="plant-card group rounded-[1.5rem] overflow-hidden bg-surface-container-lowest soft-elevation border border-outline-variant/30"
-            data-category="interior"
-            data-name="monstera costela de adão"
-          >
-            <div class="relative aspect-[4/3] overflow-hidden">
-              <img
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                alt="Folhagem exuberante de uma planta Monstera"
-                src="https://images.unsplash.com/photo-1503149779833-1de50ebe5f8a?auto=format&fit=crop&w=900&q=80"
-              />
-              <span
-                class="absolute top-3 left-3 bg-white/90 text-primary text-[11px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full"
-                >Interior</span
-              >
-            </div>
-            <div class="p-5">
-              <h3 class="font-headline-md text-headline-md text-on-background mb-1">Monstera</h3>
-              <p class="text-on-surface-variant text-sm">
-                Folhas marcantes para dar personalidade à casa.
-              </p>
-            </div>
-          </article>
-
-          <article
-            class="plant-card group rounded-[1.5rem] overflow-hidden bg-surface-container-lowest soft-elevation border border-outline-variant/30"
-            data-category="interior"
-            data-name="lírio da paz"
-          >
-            <div class="relative aspect-[4/3] overflow-hidden">
-              <img
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                alt="Flor branca delicada de um lírio-da-paz"
-                src="https://images.unsplash.com/photo-1593691509543-c55fb32d8de5?auto=format&fit=crop&w=900&q=80"
-              />
-              <span
-                class="absolute top-3 left-3 bg-white/90 text-primary text-[11px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full"
-                >Interior</span
-              >
-            </div>
-            <div class="p-5">
-              <h3 class="font-headline-md text-headline-md text-on-background mb-1">
-                Lírio-da-paz
-              </h3>
-              <p class="text-on-surface-variant text-sm">
-                Uma presença elegante com flores delicadas.
-              </p>
-            </div>
-          </article>
-
-          <article
-            class="plant-card group rounded-[1.5rem] overflow-hidden bg-surface-container-lowest soft-elevation border border-outline-variant/30"
-            data-category="exterior"
-            data-name="lavanda"
-          >
-            <div class="relative aspect-[4/3] overflow-hidden">
-              <img
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                alt="Campo de lavanda roxa em flor"
-                src="https://images.unsplash.com/photo-1600759487717-62bbb608106e?auto=format&fit=crop&w=900&q=80"
-              />
-              <span
-                class="absolute top-3 left-3 bg-white/90 text-primary text-[11px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full"
-                >Exterior</span
-              >
-            </div>
-            <div class="p-5">
-              <h3 class="font-headline-md text-headline-md text-on-background mb-1">Lavanda</h3>
-              <p class="text-on-surface-variant text-sm">
-                Cor e aroma para varandas e jardins soalheiros.
-              </p>
-            </div>
-          </article>
-
-          <article
-            class="plant-card group rounded-[1.5rem] overflow-hidden bg-surface-container-lowest soft-elevation border border-outline-variant/30"
-            data-category="suculentas"
-            data-name="echeveria suculenta"
-          >
-            <div class="relative aspect-[4/3] overflow-hidden">
-              <img
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                alt="Suculenta Echeveria com folhas em roseta"
-                src="https://images.unsplash.com/photo-1657988149309-b9d63475d553?auto=format&fit=crop&w=900&q=80"
-              />
-              <span
-                class="absolute top-3 left-3 bg-white/90 text-primary text-[11px] uppercase tracking-widest font-semibold px-3 py-1 rounded-full"
-                >Suculentas</span
-              >
-            </div>
-            <div class="p-5">
-              <h3 class="font-headline-md text-headline-md text-on-background mb-1">Echeveria</h3>
-              <p class="text-on-surface-variant text-sm">
-                Uma suculenta compacta, perfeita para pequenos espaços.
-              </p>
-            </div>
-          </article>
-        </div>
+        <div class="plant-grid grid sm:grid-cols-2 gap-6 mt-8" id="plant-grid"></div>
         <p id="catalogue-empty" class="empty-state hidden text-on-surface-variant mt-8" role="status">
           Não encontrámos plantas com esses critérios.
         </p>
+      </section>
+
+      <!-- O MEU JARDIM -->
+      <section id="jardim" class="app-screen hidden py-10" aria-labelledby="garden-title">
+        <p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">
+          As suas plantas
+        </p>
+        <h2 id="garden-title" class="font-headline-lg text-headline-lg text-on-background mb-3">
+          O meu Jardim
+        </h2>
+        <p class="text-on-surface-variant max-w-md">
+          Escolha plantas no catálogo e organize aqui as respetivas rotinas de cuidados.
+        </p>
+        <p class="mt-5 text-sm text-on-surface-variant">
+          Plantas no jardim: <span id="garden-count">0</span>
+        </p>
+        <p class="mt-2 text-sm text-on-surface-variant" data-app-status role="status" aria-live="polite"></p>
+        <p id="garden-empty" class="mt-8 rounded-2xl bg-surface-container-low p-6 text-on-surface-variant" role="status">
+          Ainda não adicionou plantas. Explore o catálogo para começar o seu jardim.
+        </p>
+        <div id="garden-grid" class="mt-6 grid gap-5 sm:grid-cols-2"></div>
+        <button
+          class="mt-6 rounded-full border border-primary px-5 py-3 font-label-md text-label-md text-primary"
+          type="button"
+          data-go-to="catalogo"
+        >
+          Explorar catálogo
+        </button>
       </section>
 
       <!-- CONTACTO -->
@@ -677,6 +638,41 @@
       </section>
     </main>
 
+    <dialog id="plant-dialog" class="plant-dialog">
+      <form id="plant-form" class="space-y-5">
+        <div class="flex items-center justify-between gap-4">
+          <h2 id="plant-dialog-title" class="font-headline-md text-headline-md">Adicionar planta</h2>
+          <button class="plant-action" type="button" data-close-dialog>
+            Fechar
+          </button>
+        </div>
+        <input name="id" type="hidden" />
+        <div>
+          <label class="mb-2 block font-label-md text-label-md" for="plant-name">Nome</label>
+          <input id="plant-name" class="w-full rounded-xl border-outline-variant" name="name" type="text" maxlength="60" required />
+        </div>
+        <div>
+          <label class="mb-2 block font-label-md text-label-md" for="plant-category">Categoria</label>
+          <select id="plant-category" class="w-full rounded-xl border-outline-variant" name="category" required>
+            <option value="interior">Interior</option>
+            <option value="exterior">Exterior</option>
+            <option value="suculentas">Suculentas</option>
+          </select>
+        </div>
+        <div>
+          <label class="mb-2 block font-label-md text-label-md" for="plant-description">Descrição</label>
+          <textarea id="plant-description" class="w-full rounded-xl border-outline-variant" name="description" rows="3" maxlength="240" required></textarea>
+        </div>
+        <div>
+          <label class="mb-2 block font-label-md text-label-md" for="plant-image">Imagem (URL opcional)</label>
+          <input id="plant-image" class="w-full rounded-xl border-outline-variant" name="image" type="url" />
+        </div>
+        <button class="w-full rounded-full bg-primary px-6 py-3 font-label-md text-label-md text-white" type="submit">
+          Guardar planta
+        </button>
+      </form>
+    </dialog>
+
     <!-- Bottom Navigation -->
     <nav
       class="bottom-nav fixed bottom-0 inset-x-0 z-30 bg-surface-container-lowest/95 backdrop-blur-md border-t border-outline-variant/40"
@@ -732,6 +728,30 @@
             </svg>
           </span>
           <span class="nav-label text-[11px] font-medium">Catálogo</span>
+        </button>
+        <button
+          class="nav-item flex flex-col items-center gap-1 py-1 px-2"
+          type="button"
+          data-screen="jardim"
+          aria-controls="jardim"
+        >
+          <span class="nav-icon-wrap flex items-center justify-center w-12 h-7 rounded-full">
+            <svg
+              class="w-5 h-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 21c0-8 4-14 14-16-2 10-8 14-16 14" />
+              <path d="M5 21c2-4 5-7 9-9" />
+              <path d="M12 20h7a1 1 0 0 0 1-1v-4" />
+            </svg>
+          </span>
+          <span class="nav-label text-[11px] font-medium">O meu Jardim</span>
         </button>
         <button
           class="nav-item flex flex-col items-center gap-1 py-1 px-2"

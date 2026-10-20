@@ -63,44 +63,6 @@ export function initNavigation() {
   const requestedScreen = window.location.hash.slice(1) || "home";
   showScreen(requestedScreen) || showScreen("home");
 
-  const searchInput = document.getElementById("catalogue-search");
-  const categoryFilters = document.querySelectorAll(".pill[data-filter]");
-  const plantCards = document.querySelectorAll(".plant-card");
-  const emptyState = document.getElementById("catalogue-empty");
-  let activeCategory = "todas";
-
-  const filterPlants = () => {
-    const query = searchInput?.value.trim().toLocaleLowerCase("pt-PT") || "";
-    let visibleCount = 0;
-
-    plantCards.forEach((card) => {
-      const matchesCategory =
-        activeCategory === "todas" || card.dataset.category === activeCategory;
-      const matchesSearch = (card.dataset.name || "")
-        .toLocaleLowerCase("pt-PT")
-        .includes(query);
-      const isVisible = matchesCategory && matchesSearch;
-
-      card.classList.toggle("hidden", !isVisible);
-      visibleCount += Number(isVisible);
-    });
-
-    emptyState?.classList.toggle("hidden", visibleCount > 0);
-  };
-
-  searchInput?.addEventListener("input", filterPlants);
-  categoryFilters.forEach((filter) => {
-    filter.addEventListener("click", () => {
-      activeCategory = filter.dataset.filter || "todas";
-      categoryFilters.forEach((button) => {
-        const isActive = button === filter;
-        button.classList.toggle("active", isActive);
-        button.setAttribute("aria-pressed", String(isActive));
-      });
-      filterPlants();
-    });
-  });
-
   const contactForm = document.getElementById("contact-form");
   const contactStatus = document.getElementById("contact-status");
   contactForm?.addEventListener("submit", (event) => {
