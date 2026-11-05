@@ -678,6 +678,11 @@
             <option value="suculentas">Suculentas</option>
           </select>
         </div>
+        <div>
+          <label class="mb-2 block font-label-md text-label-md" for="plant-description">Descrição (máximo 300 caracteres)</label>
+          <textarea id="plant-description" class="w-full resize-none overflow-hidden rounded-xl border-outline-variant" name="description" rows="2" maxlength="300" aria-describedby="description-count"></textarea>
+          <p id="description-count" class="mt-1 text-right text-xs text-on-surface-variant" aria-live="polite">0/300</p>
+        </div>
         <fieldset id="care-tags" class="grid gap-3">
           <legend class="font-label-md text-label-md">Cuidados a ter</legend>
           <div id="care-tag-options" class="grid max-h-80 gap-4 overflow-y-auto"></div>

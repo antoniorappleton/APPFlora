@@ -94,7 +94,7 @@ function makePlantCard(plant) {
         LEGACY_CARE_TAGS.find((legacyTag) => legacyTag.id === tag)?.label,
     )
     .filter(Boolean);
-  card.dataset.name = `${plant.name} ${careLabels.join(" ")}`;
+  card.dataset.name = `${plant.name} ${plant.description || ""} ${careLabels.join(" ")}`;
 
   const imageWrap = createElement("div", "relative aspect-[4/3] overflow-hidden");
   const image = createElement(
@@ -121,6 +121,16 @@ function makePlantCard(plant) {
       plant.name,
     ),
   );
+
+  if (plant.description) {
+    content.append(
+      createElement(
+        "p",
+        "mt-2 whitespace-pre-line text-sm text-on-surface-variant",
+        plant.description,
+      ),
+    );
+  }
 
   const careList = createElement("div", "mt-3 flex flex-wrap gap-2");
   careList.setAttribute("aria-label", "Etiquetas de cuidados");
@@ -343,6 +353,11 @@ function openPlantDialog(plant) {
   form.elements.namedItem("id").value = plant?.id || "";
   form.elements.namedItem("name").value = plant?.name || "";
   form.elements.namedItem("category").value = plant?.category || "interior";
+  const description = form.elements.namedItem("description");
+  form.dataset.originalDescription = plant?.description || "";
+  form.dataset.descriptionEdited = "false";
+  description.value = form.dataset.originalDescription.slice(0, 300);
+  updateDescriptionField(description);
   form.elements.namedItem("image").value = plant?.image || "";
   const selectedCareTags = new Set(plant?.careTags || []);
   const careTagOptions = document.getElementById("care-tag-options");
@@ -387,6 +402,13 @@ function openPlantDialog(plant) {
   form.elements.namedItem("name").focus();
 }
 
+function updateDescriptionField(description) {
+  description.style.height = "auto";
+  description.style.height = `${description.scrollHeight}px`;
+  document.getElementById("description-count").textContent =
+    `${description.value.length}/300`;
+}
+
 function makeCareTagOption(tag, selectedCareTags) {
   const label = createElement("label", "care-tag");
   const input = document.createElement("input");
@@ -426,6 +448,10 @@ export function initPlantManagement() {
         id: String(data.get("id") || ""),
         name: String(data.get("name") || "").trim(),
         category: String(data.get("category") || ""),
+        description:
+          form.dataset.descriptionEdited === "true"
+            ? String(data.get("description") || "").trim()
+            : form.dataset.originalDescription,
         careTags: data.getAll("careTags").map(String),
         image: String(data.get("image") || "").trim(),
       });
@@ -441,6 +467,12 @@ export function initPlantManagement() {
         .closest(".care-tag")
         .classList.toggle("is-selected", event.target.checked);
     }
+  });
+
+  const description = document.getElementById("plant-description");
+  description.addEventListener("input", () => {
+    description.form.dataset.descriptionEdited = "true";
+    updateDescriptionField(description);
   });
 
   document.getElementById("plant-grid").addEventListener("click", (event) => {
