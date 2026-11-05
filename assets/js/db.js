@@ -1,6 +1,23 @@
 const STORAGE_KEY = "floracare-data-v1";
+const CATALOG_SEED_VERSION = 2;
 
 const initialPlants = [
+  {
+    id: "buganvilia",
+    name: "Buganvília",
+    category: "exterior",
+    description:
+      "A buganvília é uma planta trepadeira tropical extremamente resistente e de crescimento vigoroso, famosa pela sua floração exuberante e pelas suas cores vibrantes (que cobrem tons de rosa, roxo, vermelho, laranja e branco).\n\nAqui tem as respostas diretas aos cuidados essenciais que pediu:\n\n• Interior ou Exterior: É uma planta obrigatoriamente de exterior. Não se desenvolve nem sobrevive a longo prazo dentro de casa, pois necessita de uma circulação de ar natural e de uma intensidade de luz impossível de replicar em ambientes fechados.\n\n• Sol ou Sombra: Exige sol pleno. Deve ser plantada no local mais soalheiro do jardim ou da varanda, recebendo no mínimo 6 horas de sol direto por dia. Se for colocada à sombra, a planta vai produzir apenas folhas verdes e perderá toda a sua floração icónica.\n\n• Regas: A regra de ouro é regar pouco. A buganvília odeia o excesso de humidade e tolera muito bem a seca. Deixe a terra secar completamente entre regas. No verão, regue apenas quando notar a terra seca e, no inverno, reduza as regas ao mínimo (ou deixe que a água da chuva trate disso se estiver no solo). O excesso de água faz cair as flores e apodrece as raízes.",
+    image: "../assets/images/Catálogo/buganvilia.jpg",
+  },
+  {
+    id: "jacaranda",
+    name: "Jacarandá",
+    category: "exterior",
+    description:
+      "Jacarandá*: Originário da América do Sul e introduzido no século XIX, é a árvore mais emblemática da capital. Na primavera, cobre praças e avenidas (como o Parque Eduardo VII ou o Largo do Rato) com uma cor púrpura vibrante. [[1]",
+    image: "../assets/images/Catálogo/jacarandá.jpg",
+  },
   {
     id: "monstera",
     name: "Monstera",
@@ -38,7 +55,11 @@ const initialPlants = [
 function loadState() {
   const storedValue = localStorage.getItem(STORAGE_KEY);
   if (storedValue === null) {
-    const initialState = { plants: initialPlants, garden: [] };
+    const initialState = {
+      plants: initialPlants,
+      garden: [],
+      catalogSeedVersion: CATALOG_SEED_VERSION,
+    };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(initialState));
     return initialState;
   }
@@ -66,6 +87,33 @@ function loadState() {
   ) {
     throw new Error("Os dados guardados da FloraCare têm um formato inválido.");
   }
+
+  const catalogSeedVersion = Number.isInteger(state.catalogSeedVersion)
+    ? state.catalogSeedVersion
+    : 0;
+  if (catalogSeedVersion < CATALOG_SEED_VERSION) {
+    const plants = [...state.plants];
+    if (
+      catalogSeedVersion < 1 &&
+      !plants.some((plant) => plant.id === "jacaranda")
+    ) {
+      plants.push(initialPlants.find((plant) => plant.id === "jacaranda"));
+    }
+    if (
+      catalogSeedVersion < 2 &&
+      !plants.some((plant) => plant.id === "buganvilia")
+    ) {
+      plants.push(initialPlants.find((plant) => plant.id === "buganvilia"));
+    }
+    const migratedState = {
+      ...state,
+      plants,
+      catalogSeedVersion: CATALOG_SEED_VERSION,
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(migratedState));
+    return migratedState;
+  }
+
   return state;
 }
 

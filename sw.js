@@ -1,4 +1,4 @@
-const CACHE_NAME = "floracare-v8";
+const CACHE_NAME = "floracare-v10";
 const APP_SHELL = [
   "index.html",
   "manifest.json",
@@ -12,6 +12,8 @@ const APP_SHELL = [
   "assets/js/modules/UI.js",
   "assets/js/modules/plants.js",
   "assets/js/modules/api.js",
+  "assets/images/Catálogo/jacarandá.jpg",
+  "assets/images/Catálogo/buganvilia.jpg",
 ];
 
 self.addEventListener("install", (event) => {

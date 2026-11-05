@@ -42,7 +42,7 @@ function safeImageSource(source) {
     return "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80";
   }
   try {
-    const url = new URL(source);
+    const url = new URL(source, document.baseURI);
     return url.protocol === "https:" || url.protocol === "http:"
       ? url.href
       : "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80";
@@ -108,7 +108,11 @@ function makePlantCard(plant) {
       "font-headline-md text-headline-md text-on-background mb-1",
       plant.name,
     ),
-    createElement("p", "text-on-surface-variant text-sm", plant.description),
+    createElement(
+      "p",
+      "whitespace-pre-line text-on-surface-variant text-sm",
+      plant.description,
+    ),
   );
 
   const actions = createElement("div", "mt-5 flex flex-wrap gap-2");
