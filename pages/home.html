@@ -164,6 +164,25 @@
       .plant-dialog::backdrop {
         background: rgba(27, 28, 25, 0.45);
       }
+      .care-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: 1px solid #c3c8be;
+        border-radius: 9999px;
+        padding: 0.55rem 0.8rem;
+        color: #434841;
+        cursor: pointer;
+        font-size: 0.875rem;
+      }
+      .care-tag.is-selected {
+        border-color: #4c6249;
+        color: #1b4332;
+        background: rgba(76, 98, 73, 0.12);
+      }
+      .care-tag input {
+        accent-color: #4c6249;
+      }
     </style>
   </head>
   <body class="bg-background text-on-background font-body-md text-body-md antialiased">
@@ -659,13 +678,13 @@
             <option value="suculentas">Suculentas</option>
           </select>
         </div>
-        <div>
-          <label class="mb-2 block font-label-md text-label-md" for="plant-description">Descrição</label>
-          <textarea id="plant-description" class="w-full rounded-xl border-outline-variant" name="description" rows="3" maxlength="1600" required></textarea>
-        </div>
+        <fieldset id="care-tags" class="grid gap-3">
+          <legend class="font-label-md text-label-md">Cuidados a ter</legend>
+          <div id="care-tag-options" class="grid max-h-80 gap-4 overflow-y-auto"></div>
+        </fieldset>
         <div>
           <label class="mb-2 block font-label-md text-label-md" for="plant-image">Imagem (URL opcional)</label>
-          <input id="plant-image" class="w-full rounded-xl border-outline-variant" name="image" type="url" />
+          <input id="plant-image" class="w-full rounded-xl border-outline-variant" name="image" type="text" inputmode="url" autocomplete="off" placeholder="Opcional: URL ou caminho da imagem" />
         </div>
         <button class="w-full rounded-full bg-primary px-6 py-3 font-label-md text-label-md text-white" type="submit">
           Guardar planta

@@ -1,10 +1,13 @@
 import {
   addRoutine,
+  CARE_TAGS,
+  CARE_TAG_GROUPS,
   deletePlant,
   deleteRoutine,
   getGarden,
   getPlants,
   isInGarden,
+  LEGACY_CARE_TAGS,
   savePlant,
   toggleGardenPlant,
 } from "../db.js";
@@ -14,6 +17,7 @@ const categories = {
   exterior: "Exterior",
   suculentas: "Suculentas",
 };
+const careTagLabels = new Map(CARE_TAGS.map((tag) => [tag.id, tag.label]));
 
 function createElement(tagName, className, text) {
   const element = document.createElement(tagName);
@@ -82,7 +86,15 @@ function makePlantCard(plant) {
   );
   card.dataset.id = plant.id;
   card.dataset.category = plant.category;
-  card.dataset.name = `${plant.name} ${plant.description}`;
+  const selectedCareTags = Array.isArray(plant.careTags) ? plant.careTags : [];
+  const careLabels = selectedCareTags
+    .map(
+      (tag) =>
+        careTagLabels.get(tag) ||
+        LEGACY_CARE_TAGS.find((legacyTag) => legacyTag.id === tag)?.label,
+    )
+    .filter(Boolean);
+  card.dataset.name = `${plant.name} ${careLabels.join(" ")}`;
 
   const imageWrap = createElement("div", "relative aspect-[4/3] overflow-hidden");
   const image = createElement(
@@ -108,12 +120,30 @@ function makePlantCard(plant) {
       "font-headline-md text-headline-md text-on-background mb-1",
       plant.name,
     ),
-    createElement(
-      "p",
-      "whitespace-pre-line text-on-surface-variant text-sm",
-      plant.description,
-    ),
   );
+
+  const careList = createElement("div", "mt-3 flex flex-wrap gap-2");
+  careList.setAttribute("aria-label", "Etiquetas de cuidados");
+  if (careLabels.length === 0) {
+    careList.append(
+      createElement(
+        "span",
+        "text-sm text-on-surface-variant",
+        "Sem etiquetas de cuidados.",
+      ),
+    );
+  } else {
+    careLabels.forEach((label) => {
+      careList.append(
+        createElement(
+          "span",
+          "rounded-full bg-surface-container px-3 py-1 text-xs font-medium text-on-surface-variant",
+          label,
+        ),
+      );
+    });
+  }
+  content.append(careList);
 
   const actions = createElement("div", "mt-5 flex flex-wrap gap-2");
   const selected = isInGarden(plant.id);
@@ -313,13 +343,60 @@ function openPlantDialog(plant) {
   form.elements.namedItem("id").value = plant?.id || "";
   form.elements.namedItem("name").value = plant?.name || "";
   form.elements.namedItem("category").value = plant?.category || "interior";
-  form.elements.namedItem("description").value = plant?.description || "";
   form.elements.namedItem("image").value = plant?.image || "";
+  const selectedCareTags = new Set(plant?.careTags || []);
+  const careTagOptions = document.getElementById("care-tag-options");
+  careTagOptions.replaceChildren();
+
+  CARE_TAG_GROUPS.forEach((group) => {
+    const section = createElement("section", "grid gap-2");
+    const heading = createElement(
+      "h3",
+      "text-sm font-semibold text-on-surface-variant",
+      group.label,
+    );
+    const options = createElement("div", "flex flex-wrap gap-2");
+    group.tags.forEach((tag) => {
+      options.append(makeCareTagOption(tag, selectedCareTags));
+    });
+    section.append(heading, options);
+    careTagOptions.append(section);
+  });
+
+  const legacyTags = LEGACY_CARE_TAGS.filter((tag) =>
+    selectedCareTags.has(tag.id),
+  );
+  if (legacyTags.length > 0) {
+    const section = createElement("section", "grid gap-2");
+    const heading = createElement(
+      "h3",
+      "text-sm font-semibold text-on-surface-variant",
+      "Etiquetas anteriores",
+    );
+    const options = createElement("div", "flex flex-wrap gap-2");
+    legacyTags.forEach((tag) => {
+      options.append(makeCareTagOption(tag, selectedCareTags));
+    });
+    section.append(heading, options);
+    careTagOptions.append(section);
+  }
   document.getElementById("plant-dialog-title").textContent = plant
     ? "Editar planta"
     : "Adicionar planta";
   dialog.showModal();
   form.elements.namedItem("name").focus();
+}
+
+function makeCareTagOption(tag, selectedCareTags) {
+  const label = createElement("label", "care-tag");
+  const input = document.createElement("input");
+  input.name = "careTags";
+  input.type = "checkbox";
+  input.value = tag.id;
+  input.checked = selectedCareTags.has(tag.id);
+  label.classList.toggle("is-selected", input.checked);
+  label.append(input, document.createTextNode(tag.label));
+  return label;
 }
 
 export function initPlantManagement() {
@@ -349,12 +426,20 @@ export function initPlantManagement() {
         id: String(data.get("id") || ""),
         name: String(data.get("name") || "").trim(),
         category: String(data.get("category") || ""),
-        description: String(data.get("description") || "").trim(),
+        careTags: data.getAll("careTags").map(String),
         image: String(data.get("image") || "").trim(),
       });
     });
     if (saved) {
       form.closest("dialog").close();
+    }
+  });
+
+  document.getElementById("care-tag-options").addEventListener("change", (event) => {
+    if (event.target.matches('input[name="careTags"]')) {
+      event.target
+        .closest(".care-tag")
+        .classList.toggle("is-selected", event.target.checked);
     }
   });
 

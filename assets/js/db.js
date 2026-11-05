@@ -1,28 +1,151 @@
 const STORAGE_KEY = "floracare-data-v1";
-const CATALOG_SEED_VERSION = 2;
+const CATALOG_SEED_VERSION = 4;
+
+export const LEGACY_CARE_TAGS = [
+  { id: "watering", label: "Rega e Humidade" },
+  { id: "light", label: "☀️ Luz e Ambiente" },
+  { id: "maintenance", label: "✂️ Manutenção e Estética" },
+  { id: "nutrition", label: "🧪 Nutrição e Solo" },
+  { id: "health", label: "🛡️ Saúde e Proteção" },
+];
+
+export const CARE_TAG_GROUPS = [
+  {
+    id: "watering",
+    label: "💧 Rega e Humidade",
+    tags: [
+      ["abundant-watering", "Rega Abundante"],
+      ["moderate-watering", "Rega Moderada"],
+      ["light-watering", "Rega Ligeira"],
+      ["immersion-watering", "Rega por Imersão"],
+      ["mist-leaves", "Borrifar Folhas"],
+      ["humidifier", "Humidificador Ligado"],
+      ["pebble-tray", "Prato com Seixos (para humidade passiva)"],
+      ["little-water", "Pouca Água"],
+      ["much-water", "Muita Água"],
+      ["consistently-moist-soil", "Solo Sempre Húmido"],
+      ["dry-between-watering", "Secar entre Regas"],
+      ["daily-watering", "Rega Diária"],
+      ["weekly-watering", "Rega 1x por Semana"],
+      ["twice-weekly-watering", "Rega 2x por Semana"],
+      ["thrice-weekly-watering", "Rega 3x por Semana"],
+      ["fortnightly-watering", "Rega Quinzenal"],
+      ["monthly-watering", "Rega Mensal"],
+      ["chlorine-sensitive", "Sensível a Cloro (usar água filtrada/descansada)"],
+    ].map(([id, label]) => ({ id, label })),
+  },
+  {
+    id: "environment",
+    label: "☀️ Luz, Ambiente e Tipo",
+    tags: [
+      ["direct-sun", "Sol Direto"],
+      ["bright-indirect-light", "Luz Indireta Forte"],
+      ["partial-shade", "Meia Sombra"],
+      ["full-shade", "Sombra Total"],
+      ["low-light", "Pouca Luz"],
+      ["indoor-plant", "Planta de Interior"],
+      ["outdoor-plant", "Planta de Exterior"],
+      ["greenhouse-plant", "Planta de Estufa"],
+      ["rotate-pot", "Rodar Vaso"],
+      ["relocate-plant", "Mudar de Local"],
+      ["protect-from-sun", "Proteger do Sol"],
+      ["avoid-drafts", "Evitar Correntes de Ar"],
+      ["protect-from-cold", "Proteger do Frio"],
+      ["protect-from-heat", "Proteger do Calor"],
+      ["tropical-climate", "Clima Tropical"],
+      ["arid-climate", "Clima Árido"],
+    ].map(([id, label]) => ({ id, label })),
+  },
+  {
+    id: "maintenance",
+    label: "✂️ Manutenção, Porte e Estética",
+    tags: [
+      ["clean-leaves", "Limpar Folhas"],
+      ["leaf-shine", "Brilho Foliar"],
+      ["remove-dry-leaves", "Remover Folhas Secas"],
+      ["formative-pruning", "Poda de Formação"],
+      ["cleaning-pruning", "Poda de Limpeza"],
+      ["take-cuttings", "Fazer Estacas (Propagação)"],
+      ["add-support", "Colocar Tutor"],
+      ["tie-branches", "Prender Ramos"],
+      ["climbing-plant", "Planta Trepadeira"],
+      ["trailing-plant", "Planta Pendente"],
+      ["fast-growth", "Crescimento Rápido"],
+      ["slow-growth", "Crescimento Lento"],
+    ].map(([id, label]) => ({ id, label })),
+  },
+  {
+    id: "nutrition",
+    label: "🧪 Nutrição, Solo e Vaso",
+    tags: [
+      ["liquid-fertilizer", "Fertilizante Líquido"],
+      ["granular-fertilizer", "Fertilizante Granulado"],
+      ["foliar-fertilizer", "Fertilizante de Folha (Foliar)"],
+      ["organic-fertilizer", "Adubo Orgânico"],
+      ["universal-substrate", "Substrato Universal"],
+      ["cactus-substrate", "Substrato p/ Cactos"],
+      ["orchid-substrate", "Substrato p/ Orquídeas"],
+      ["aerate-soil", "Arejar Solo"],
+      ["repot-plant", "Mudar de Vaso"],
+      ["refresh-topsoil", "Renovar Terra Superficial"],
+      ["clay-pot", "Vaso de Barro"],
+      ["plastic-pot", "Vaso de Plástico"],
+      ["good-drainage", "Boa Drenagem"],
+    ].map(([id, label]) => ({ id, label })),
+  },
+  {
+    id: "health",
+    label: "🛡️ Saúde, Proteção e Segurança",
+    tags: [
+      ["inspect-pests", "Inspecionar Pragas"],
+      ["remove-mealybugs", "Limpar Cochonilha"],
+      ["treat-mites", "Tratar Ácaros"],
+      ["neem-oil", "Óleo de Neem"],
+      ["potassium-soap", "Sabão Potássico"],
+      ["apply-fungicide", "Aplicar Fungicida"],
+      ["quarantine-plant", "Quarentena"],
+      ["wash-roots", "Lavar Raízes"],
+      ["toxic-to-pets", "Tóxica para Animais"],
+      ["pet-friendly", "Pet Friendly (Segura para animais)"],
+      ["hardy-plant", "Planta Resistente"],
+      ["sensitive-plant", "Planta Sensível"],
+    ].map(([id, label]) => ({ id, label })),
+  },
+];
+
+export const CARE_TAGS = CARE_TAG_GROUPS.flatMap((group) => group.tags);
+const careTagIds = new Set([
+  ...CARE_TAGS.map((tag) => tag.id),
+  ...LEGACY_CARE_TAGS.map((tag) => tag.id),
+]);
 
 const initialPlants = [
   {
     id: "buganvilia",
     name: "Buganvília",
     category: "exterior",
-    description:
-      "A buganvília é uma planta trepadeira tropical extremamente resistente e de crescimento vigoroso, famosa pela sua floração exuberante e pelas suas cores vibrantes (que cobrem tons de rosa, roxo, vermelho, laranja e branco).\n\nAqui tem as respostas diretas aos cuidados essenciais que pediu:\n\n• Interior ou Exterior: É uma planta obrigatoriamente de exterior. Não se desenvolve nem sobrevive a longo prazo dentro de casa, pois necessita de uma circulação de ar natural e de uma intensidade de luz impossível de replicar em ambientes fechados.\n\n• Sol ou Sombra: Exige sol pleno. Deve ser plantada no local mais soalheiro do jardim ou da varanda, recebendo no mínimo 6 horas de sol direto por dia. Se for colocada à sombra, a planta vai produzir apenas folhas verdes e perderá toda a sua floração icónica.\n\n• Regas: A regra de ouro é regar pouco. A buganvília odeia o excesso de humidade e tolera muito bem a seca. Deixe a terra secar completamente entre regas. No verão, regue apenas quando notar a terra seca e, no inverno, reduza as regas ao mínimo (ou deixe que a água da chuva trate disso se estiver no solo). O excesso de água faz cair as flores e apodrece as raízes.",
+    careTags: [
+      "little-water",
+      "dry-between-watering",
+      "outdoor-plant",
+      "direct-sun",
+      "climbing-plant",
+      "fast-growth",
+    ],
     image: "../assets/images/Catálogo/buganvilia.jpg",
   },
   {
     id: "jacaranda",
     name: "Jacarandá",
     category: "exterior",
-    description:
-      "Jacarandá*: Originário da América do Sul e introduzido no século XIX, é a árvore mais emblemática da capital. Na primavera, cobre praças e avenidas (como o Parque Eduardo VII ou o Largo do Rato) com uma cor púrpura vibrante. [[1]",
+    careTags: [],
     image: "../assets/images/Catálogo/jacarandá.jpg",
   },
   {
     id: "monstera",
     name: "Monstera",
     category: "interior",
-    description: "Folhas marcantes para dar personalidade à casa.",
+    careTags: [],
     image:
       "https://images.unsplash.com/photo-1503149779833-1de50ebe5f8a?auto=format&fit=crop&w=900&q=80",
   },
@@ -30,7 +153,7 @@ const initialPlants = [
     id: "peace-lily",
     name: "Lírio-da-paz",
     category: "interior",
-    description: "Uma presença elegante com flores delicadas.",
+    careTags: [],
     image:
       "https://images.unsplash.com/photo-1593691509543-c55fb32d8de5?auto=format&fit=crop&w=900&q=80",
   },
@@ -38,7 +161,7 @@ const initialPlants = [
     id: "lavender",
     name: "Lavanda",
     category: "exterior",
-    description: "Cor e aroma para varandas e jardins soalheiros.",
+    careTags: [],
     image:
       "https://images.unsplash.com/photo-1600759487717-62bbb608106e?auto=format&fit=crop&w=900&q=80",
   },
@@ -46,7 +169,7 @@ const initialPlants = [
     id: "echeveria",
     name: "Echeveria",
     category: "suculentas",
-    description: "Uma suculenta compacta, perfeita para pequenos espaços.",
+    careTags: [],
     image:
       "https://images.unsplash.com/photo-1657988149309-b9d63475d553?auto=format&fit=crop&w=900&q=80",
   },
@@ -75,8 +198,14 @@ function loadState() {
         typeof plant.id === "string" &&
         typeof plant.name === "string" &&
         typeof plant.category === "string" &&
-        typeof plant.description === "string" &&
-        typeof plant.image === "string",
+        typeof plant.image === "string" &&
+        (plant.description === undefined ||
+          typeof plant.description === "string") &&
+        (plant.careTags === undefined ||
+          (Array.isArray(plant.careTags) &&
+            plant.careTags.every(
+              (tag) => typeof tag === "string" && careTagIds.has(tag),
+            ))),
     ) ||
     !state.garden.every(
       (entry) =>
@@ -104,6 +233,39 @@ function loadState() {
       !plants.some((plant) => plant.id === "buganvilia")
     ) {
       plants.push(initialPlants.find((plant) => plant.id === "buganvilia"));
+    }
+    if (catalogSeedVersion < 3) {
+      for (let index = 0; index < plants.length; index += 1) {
+        if (!Array.isArray(plants[index].careTags)) {
+          plants[index] = {
+            ...plants[index],
+            careTags:
+              plants[index].id === "buganvilia"
+                ? initialPlants.find((plant) => plant.id === "buganvilia")
+                    .careTags
+                : [],
+          };
+        }
+      }
+    }
+    if (
+      catalogSeedVersion < 4 &&
+      plants.some(
+        (plant) =>
+          plant.id === "buganvilia" &&
+          Array.isArray(plant.careTags) &&
+          plant.careTags.includes("watering") &&
+          plant.careTags.includes("light"),
+      )
+    ) {
+      const buganviliaIndex = plants.findIndex(
+        (plant) => plant.id === "buganvilia",
+      );
+      plants[buganviliaIndex] = {
+        ...plants[buganviliaIndex],
+        careTags: initialPlants.find((plant) => plant.id === "buganvilia")
+          .careTags,
+      };
     }
     const migratedState = {
       ...state,
@@ -148,7 +310,7 @@ export function savePlant(plant) {
     if (index === -1) {
       throw new Error("A planta que tentou editar já não existe.");
     }
-    plants[index] = plant;
+    plants[index] = { ...plants[index], ...plant };
   } else {
     plants.push({ ...plant, id: createId() });
   }
